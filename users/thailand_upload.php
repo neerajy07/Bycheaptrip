@@ -17,95 +17,59 @@ if (isset($_GET['reff_id'])) {
     while ($row = mysqli_fetch_assoc($result)) {
 ?>
       <?php
-      // if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      //   // Upload file
-      //   $file_name = $_FILES['file']['name'];
-      //   $file_tmp = $_FILES['file']['tmp_name'];
-      //   $file_type = $_FILES['file']['type'];
-      //   $uploads_dir = "uploads/";
-      //   $upload_details = $_POST['upload_details'];
-      //   $reff_upload = $row['reff_id'];
-      //   $account_file_id = $row['account_id'];
-
-      //   if (move_uploaded_file($file_tmp, $uploads_dir . $file_name)) {
-      //     $sql = "INSERT INTO thailand_upload (`file`, `upload_details`, `reff_upload`, `account_file_id`) VALUES (?, ?, ?, ?)";
-
-
-      //     // Prepare statement
-      //     $stmt = $conn->prepare($sql);
-
-      //     if ($stmt) {
-      //       // Bind parameters
-      //       $stmt->bind_param("ssii", $file_name, $upload_details, $reff_upload, $account_file_id);
-
-      //       // Execute statement
-      //       if ($stmt->execute()) {
-      //         echo "<script>alert('File uploaded successfully');</script>";
-      //       } else {
-      //         echo "Error executing SQL statement: " . $stmt->error;
-      //       }
-
-      //       // Close statement
-      //       $stmt->close();
-      //     } else {
-      //       echo "Error preparing SQL statement: " . $conn->error;
-      //     }
-      //   } else {
-      //     echo "File upload failed.";
-      //   }
-      // }
       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Upload file
-        $file_name = $_FILES['file']['name'];
-        $file_tmp = $_FILES['file']['tmp_name'];
-        $file_type = $_FILES['file']['type'];
-        $uploads_dir = "uploads/";
-        $upload_details = $_POST['upload_details'];
-        $reff_upload = $row['reff_id'];
-        $account_file_id = $row['account_id'];
+        $uploadDetails = mysqli_real_escape_string($conn, $_POST['upload_details']);
+        $reffId = mysqli_real_escape_string($conn, $_POST['id_reff']);
+        $account_file_id = $_POST["account_file_id"];
     
-        if (move_uploaded_file($file_tmp, $uploads_dir . $file_name)) {
-            $sql = "INSERT INTO thailand_upload (`file`, `upload_details`, `reff_upload`, `account_file_id`) VALUES ('$file_name', '$upload_details','$reff_id', '$account_file_id')";
-            echo "<script> alert('$sql');</script>";
-            exit;
-            // Prepare statement
-            $stmt = $conn->prepare($sql);
-           
+        // Handle file upload
+        $file = $_FILES['file'];
+        $fileName = $file['name'];
+        $fileTmpName = $file['tmp_name'];
+        $fileSize = $file['size'];
+        $fileError = $file['error'];
     
-            // if ($stmt) {
-            //     // Bind parameters
-            //     $stmt->bind_param("ssii", $file_name, $upload_details, $reff_upload, $account_file_id);
-                
-            //     // Execute statement
-            //     if ($stmt->execute()) {
-            //         echo "<script>alert('File uploaded successfully');</script>";
-            //     } else {
-            //         echo "Error executing SQL statement: " . $stmt->error;
-            //     }
+        // Generate a unique filename
+        $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        $uniqueFileName = uniqid('', true) . '.' . $fileExtension;
     
-                // Close statement
-                $stmt->close();
-            } else {
-                echo "Error preparing SQL statement: " . $conn->error;
-            }
-        } else {
-            echo "File upload failed.";
+        // Destination directory
+        $uploadDirectory = 'uploads/';
+    
+        // Validate file type
+        $allowedExtensions = array("pdf", "docx", "jpg", "png");
+        if (!in_array($fileExtension, $allowedExtensions)) {
+            echo"<script>alert('Invalid file type. Please upload a supported file format.');</script>";
         }
-    // }
     
+        // Move uploaded file to destination directory with unique filename
+        $destination = $uploadDirectory . $uniqueFileName;
+        if (move_uploaded_file($fileTmpName, $destination)) {
+            // Prepare SQL statement
+            $sql = "INSERT INTO thailand_upload (file, upload_details, id_reff, account_file_id) VALUES (?, ?, ?, ?)";
+            $stmt = mysqli_prepare($conn, $sql);
     
-
-
+            // Bind parameters to the prepared statement
+            mysqli_stmt_bind_param($stmt, "ssss", $uniqueFileName, $uploadDetails, $reffId, $account_file_id);
+    
+            // Execute prepared statement
+            if (mysqli_stmt_execute($stmt)) {
+                echo" <script>alert('File uploaded and data inserted successfully!');</script>";
+            } else {
+                 echo "<script> alert('Error: ' . mysqli_error($conn)); </script>";
+            }
+        } else{
+            echo "<script> alert('Error uploading file.')</script>";
+        }
+      }
+    
       ?>
       <main id="main" class="main">
 
         <div class="pagetitle">
-          <h1>Form Elements</h1>
+          <h1>Upload Documents</h1>
           <nav>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-              <li class="breadcrumb-item">Forms</li>
-              <li class="breadcrumb-item active">Elements</li>
             </ol>
           </nav>
 
@@ -130,6 +94,13 @@ if (isset($_GET['reff_id'])) {
                       <label for="inputText" class="col-sm-3 col-form-label">Upload Details</label>
                       <div class="col-sm-9">
                         <input type="text" class="form-control" id="inputText" name="upload_details" required placeholder="Documents Details ...">
+                      </div>
+                    </div>
+                    <div class="row mb-3">
+                      <!-- <label for="inputText" class="col-sm-3 col-form-label">unique</label> -->
+                      <div class="col-sm-9">
+                        <input type="hidden" name="account_file_id" value="<?php echo $row['account_id'] ?>">
+                        <input type="hidden" name="id_reff" value="<?php echo $row['reff_id'] ?>">
                       </div>
                     </div>
                     <div class="row mb-3">
@@ -227,6 +198,58 @@ if (isset($_GET['reff_id'])) {
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Show Uploads Documents</h5>
+
+                  <!-- Default Table -->
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Document Deatils</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php
+                      $query = "SELECT * FROM `thailand_upload`where account_file_id='$_SESSION[userEmail]' And id_reff='$_GET[reff_id]'";
+                      $res = mysqli_query($conn, $query);
+                      $a = 1;
+                      while ($upload = mysqli_fetch_assoc($res)) {
+                      ?>
+                        <tr>
+                          <th scope="row"><?php echo $a; ?></th>
+                          <!-- <td><?php echo "./upload/" . $upload['file']; ?></td> -->
+                          <!-- <td><img src="<?php echo "./uploads/" . $upload['file']; ?>" width="150" alt="Uploaded Image"></td> -->
+                          <td><a href="<?php echo "./uploads/" . $upload['file']; ?>" target="_blank"><img src="<?php echo "./uploads/" . $upload['file']; ?>" width="150" alt="Uploaded Image"></a></td>
+                          <td><?php echo $upload['upload_details']; ?></td>
+                          <td><?php echo date('d-m-Y', strtotime($upload['create_date'])); ?></td>
+                          <td>
+                            <a href="=<?php ?>" class="btn btn-primary"><i class="bi bi-check-circle"></i></a>
+                            <button type="button" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>
+                          </td>
+                        </tr>
+                      <?php
+                        $a++;
+                      }
+
+
+                      ?>
+                    </tbody>
+                  </table>
+                  <!-- End Default Table Example -->
+                </div>
+              </div>
             </div>
           </div>
         </section>
