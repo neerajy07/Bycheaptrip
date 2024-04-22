@@ -1,23 +1,14 @@
 <?php
-include "../connection.php";
+include "../../connection.php";
 session_start();
-if (($_SESSION["usersID"] == "")) {
+if (!isset($_SESSION["userid"])) {
     header("Location:../index");
 }
 ?>
-<?php include('header.php'); ?>
-<?php include('sidebar.php'); ?>
-<main id="main" class="main">
-    <section class="section">
-        <div class="row">
+<?php $page = "";
+include("./incluede/header.php") ?>
 
-            <div class="col-lg-12">
-
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Thailand Package Datails</h5>
-
-                        <form action="" method="post">
+<form action="" method="post">
                             <section class="content">
                                 <br>
                                 <div class="box box-default">
@@ -91,7 +82,7 @@ $formatted_date = date("d M Y", $timestamp);
     if (mysqli_num_rows($result) > 0) {
         while($hot = mysqli_fetch_assoc($result)) {
             ?>
-<?php echo $hot['nights']  ?> Nights <?php echo $hot['city_name'] ?> (<?php echo $hot['hotel_name'] ?> * - <?php echo $hot['category_name'] ?> - <?php echo $hot['rooms'] ?> room)
+<?php echo $hot['nights']  ?> Nights <?php echo $hot['city_name'] ?> (<?php echo $hot['hotel_name'] ?> * - <?php echo $hot['category_name'] ?> - <?php echo $hot['rooms'] ?> room Date - <?php echo $hot['hotelCheckinDate'] ?>)
 <?php 
  }
 } else {
@@ -157,14 +148,7 @@ if (mysqli_num_rows($result) > 0) {
 
 *Total Package cost <?php echo $row['package_inr'] ?>/- inr Excluding GST*
 
-<?php 
- }
-} else {
-    echo "No results";
-}
-}
 
-?>
  </textarea>
                                             </div>
                                         </div>
@@ -180,15 +164,15 @@ if (mysqli_num_rows($result) > 0) {
                                                         </td>
                                                         <td style="padding: 15px;">
                                           
-                       <a href="calculator_b2b.php?elid=1&edid=36940" class="btn btn-primary">
+                       <!-- <a href="calculator_b2b.php?elid=1&edid=36940" class="btn btn-primary"> -->
                       Edit Information
                       </a>
                   </td>
                                                         <!-- check_user_type_and_converted_type_and_payment_status_and_customer_id -->
                                                         <td>
-                                                            <!-- <form action="" method="POST" id="send_confirmation_frm">
+                                                            <form action="" method="POST" id="send_confirmation_frm">
                       <button type="submit" name="send_confirmation" id="send_confirmation" class="btn btn-primary" ><i class="fa fa-envelope"></i> Send for Confirmation</button>                                
-                    </form>   -->
+                    </form>  
                                                         </td>
 
                                                         <!-- check_user_type_and_converted_type_and_payment_status -->
@@ -200,13 +184,14 @@ if (mysqli_num_rows($result) > 0) {
                                     </div><br><br><br><br><br>
                                 </div>
                             </section>
+                            <?php 
+ }
+} else {
+    echo "No results";
+}
+}
+
+?>
                         </form>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-</main><!-- End #main -->
-<?php include('footer.php'); ?>
+                            
+                        <?php include("./incluede/footer.php") ?>

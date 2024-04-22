@@ -180,16 +180,16 @@
             </ul>
         </li>
 
-        <!-- <li class="nav-heading">Pages</li>
+       <!-- <li class="nav-heading">Pages</li> -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>Profile</span>
+            <a class="nav-link collapsed" href="final_cust">
+                <i class="bi bi-person">Final Customer</i>
+                <span></span>
             </a>
         </li>
 
-        <li class="nav-item">
+        <!--  <li class="nav-item">
             <a class="nav-link collapsed" href="pages-faq.html">
                 <i class="bi bi-question-circle"></i>
                 <span>F.A.Q</span>
