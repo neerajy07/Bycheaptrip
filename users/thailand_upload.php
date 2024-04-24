@@ -235,8 +235,9 @@ if (isset($_GET['reff_id'])) {
                           <td><?php echo $upload['upload_details']; ?></td>
                           <td><?php echo date('d-m-Y', strtotime($upload['create_date'])); ?></td>
                           <td>
-                            <a href="=<?php ?>" class="btn btn-primary"><i class="bi bi-check-circle"></i></a>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-exclamation-octagon"></i></button>
+                              <a href="thailand_upload_edit?upload_id=<?php echo $upload['upload_id'] ?>" class="btn btn-primary"><i class="bi bi-check-circle"></i></a>
+                            <!-- <a href=" <?php //echo $upload['upload_id'] ?>" class="btn btn-danger" id="deleteButton"><i class="bi bi-exclamation-octagon"></i></a> -->
+                            <a href="" class="btn btn-danger delete-button-upload" data-upload-id="<?php echo $upload['upload_id'] ?>">delete</a>
                           </td>
                         </tr>
                       <?php
