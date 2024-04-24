@@ -28,9 +28,9 @@ include("./incluede/header.php") ?>
 </style>
 <?php
 // Assuming you have a database connection established
-
 // Function to sanitize input data
-function sanitize_input($data) {
+function sanitize_input($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -80,4 +80,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])) {
                             </form>
                         </div>
                     </div>
-                    <?php include("./incluede/footer.php") ?>
+<?php include("./incluede/footer.php") ?>

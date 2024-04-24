@@ -2775,7 +2775,7 @@ if (($_SESSION["usersID"] == "")) {
         </div>
         </div>
     </section>
-</main><!-- End #main -->
+</main>
 <?php include "footer.php" ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

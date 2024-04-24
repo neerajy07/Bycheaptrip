@@ -61,7 +61,7 @@ include("./incluede/header.php") ?>
                 </thead>
                 <tbody>
                   <?php
-                  $query = "SELECT * FROM `thailand_customers`";
+                  $query = "SELECT * FROM `thailand_customers` ORDER BY create_date DESC";
                   $res = mysqli_query($conn, $query);
                   $a = 1;
                   while ($row = mysqli_fetch_assoc($res)) {
@@ -85,18 +85,18 @@ include("./incluede/header.php") ?>
                       <td><?php echo $row['account_id'] ?></td>
                       <td>
                         <div class="dropdown">
-                          <?php  if($row['status'] == 'pending'){?>
-                          <button class="btn btn-sm btn-warning" type="button" id="statusDropdown<?php echo $row['cust_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $row['status']; ?>
-                          </button>
-                          <?php }else if($row['status']=='confirm'){ ?>
-                          <button class="btn btn-sm btn-success" type="button" id="statusDropdown<?php echo $row['cust_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $row['status']; ?>
-                          </button>
-                          <?php }else{ ?>
+                          <?php if ($row['status'] == 'pending') { ?>
+                            <button class="btn btn-sm btn-warning" type="button" id="statusDropdown<?php echo $row['cust_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <?php echo $row['status']; ?>
+                            </button>
+                          <?php } else if ($row['status'] == 'confirm') { ?>
+                            <button class="btn btn-sm btn-success" type="button" id="statusDropdown<?php echo $row['cust_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <?php echo $row['status']; ?>
+                            </button>
+                          <?php } else { ?>
                             <button class="btn btn-sm btn-danger" type="button" id="statusDropdown<?php echo $row['cust_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $row['status']; ?>
-                          </button>
+                              <?php echo $row['status']; ?>
+                            </button>
                           <?php } ?>
 
                           <div class="dropdown-menu" aria-labelledby="statusDropdown<?php echo $row['cust_id']; ?>">
@@ -104,11 +104,10 @@ include("./incluede/header.php") ?>
                             <a class="dropdown-item" href="" onclick="setStatus('<?php echo $row['cust_id']; ?>', 'cancel')">Cancel</a>
                             <a class="dropdown-item" href="" onclick="setStatus('<?php echo $row['cust_id']; ?>', 'pending')">Pending</a>
                           </div>
+                          <a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="text-white btn btn-sm btn-primary">
+                          <span class="oi oi-eye"></span>
+                          </a>
                         </div>
-                      </td>
-                      <td>
-                        <button class="btn btn-sm btn-primary"> <a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="text-white">Show Details</a></button>
-                        <!-- <button class="btn btn-sm btn-danger">Update Status</button> -->
                       </td>
                     </tr>
                   <?php
@@ -137,31 +136,37 @@ include("./incluede/header.php") ?>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script>
-    // JavaScript function to handle status change
-    function setStatus(customerId, newStatus) {
-        // Send an AJAX request to update_status.php
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "update_status.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Update the badge text if the request is successful
-                document.getElementById('statusDropdown' + customerId).textContent = xhr.responseText;
+  // JavaScript function to handle status change
+  function setStatus(customerId, newStatus) {
+    // Send an AJAX request to update_status.php
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "update_status.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        // Update the badge text if the request is successful
+        document.getElementById('statusDropdown' + customerId).textContent = xhr.responseText;
 
-                if(xhr.responseText === newStatus) {
-                    alert("Status changed successfully.");
-                } else {
-                    alert("Failed to update status.");
-                }
-            }
-        };
-        xhr.send("custId=" + customerId + "&newStatus=" + newStatus);
-    }
+        if (xhr.responseText === newStatus) {
+          alert("Status changed successfully.");
+        } else {
+          alert("Failed to update status.");
+        }
+      }
+    };
+    xhr.send("custId=" + customerId + "&newStatus=" + newStatus);
+  }
 </script>
 <script>
   $(document).ready(function() {
     var table = $('[data-table]').DataTable({
       "columns": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,

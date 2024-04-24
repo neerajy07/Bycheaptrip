@@ -140,6 +140,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = trim($_POST["phone"]);
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
+    $balance=0;
+
 
     $errors = [];
 
@@ -188,6 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (empty($errors)) {
             $sql = "INSERT INTO users (name, gender, email, phone, password) VALUES ('$name', '$gender', '$email', '$phone', '$password')";
+            $sql = "INSERT INTO wallets (user_id, phone, balance) VALUES ('$email', '$phone', '$balance')";
 
             if ($conn->query($sql) === TRUE) {
                 echo "<script>alert('Registered successfully. Please verify your account then login in 24 hours .');

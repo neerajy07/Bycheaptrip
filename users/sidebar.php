@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="dashboard"\>
+            <a class="nav-link " href="dashboard">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
@@ -188,6 +188,19 @@
                 <span></span>
             </a>
         </li>
+        
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="thailand_payment">
+                <i class="bi bi-envelope"></i>
+                <span>Payments</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="thailand_wallet">
+                <i class="bi bi-envelope"></i>
+                <span>Wallet</span>
+            </a>
+        </li>
 
         <!--  <li class="nav-item">
             <a class="nav-link collapsed" href="pages-faq.html">
@@ -196,12 +209,7 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-contact.html">
-                <i class="bi bi-envelope"></i>
-                <span>Contact</span>
-            </a>
-        </li>
+       
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="pages-register.html">
