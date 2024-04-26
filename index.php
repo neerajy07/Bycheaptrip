@@ -187,17 +187,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result_phone_check->num_rows > 0) {
             $errors["phone"] = "Phone number already exists.";
         }
-
         if (empty($errors)) {
-            $sql = "INSERT INTO users (name, gender, email, phone, password) VALUES ('$name', '$gender', '$email', '$phone', '$password')";
-            $sql = "INSERT INTO wallets (user_id, phone, balance) VALUES ('$email', '$phone', '$balance')";
-
-            if ($conn->query($sql) === TRUE) {
+            // Insert user data into the users table
+            $user_sql = "INSERT INTO users (name, gender, email, phone, password) VALUES ('$name', '$gender', '$email', '$phone', '$password')";
+            
+            // Insert wallet data into the wallets table
+            $wallet_sql = "INSERT INTO wallets (user_id, contact, balance) VALUES ('$email', '$phone', '$balance')";
+            
+            // Execute both SQL statements
+            if ($conn->query($user_sql) === TRUE && $conn->query($wallet_sql) === TRUE) {
                 echo "<script>alert('Registered successfully. Please verify your account then login in 24 hours .');
                 window.open('login','_self');
                 </script>";
             } else {
-                echo "<script>alert('Error: " . $sql . "<br>" . $conn->error . "');</script>";
+                echo "<script>alert('Error: " . $user_sql . "<br>" . $conn->error . "');</script>";
+                echo "<script>alert('Error: " . $wallet_sql . "<br>" . $conn->error . "');</script>";
             }
         } else {
             // Display errors
@@ -207,6 +211,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             echo "</script>";
         }
+        
 
         $conn->close();
     } else {

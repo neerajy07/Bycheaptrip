@@ -11,7 +11,15 @@ if (($_SESSION["usersID"] == "")) {
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-
+                <?php 
+                $sql="SELECT * FROM `wallets` where user_id='$_SESSION[userEmail]'";
+                $result = mysqli_query($conn, $sql);
+                while($row = mysqli_fetch_assoc($result)){
+              ?>
+                <div class="card mb-3 text-center"><b>Wallet</b>Balance:<?php echo $row['balance'] ?></div>
+                <?php 
+                }
+                ?>
                 <div class="card">
                     <div class="card-header"><a href="thailand_payment_form" class="btn btn-primary float-end"><i class="bi bi-plus-circle"></i> Add Payment</a></div>
                     <div class="card-body">
@@ -46,7 +54,6 @@ if (($_SESSION["usersID"] == "")) {
                                         <td><?php echo $payment['user_ammount'] ?></td>
                                         <!-- <td><?php echo $payment['created_date'] ?> </td> -->
                                         <td><?php echo date('d-m-Y', strtotime($payment['created_date'])); ?></td>
-
                                         <td>
                                             <?php
                                             if ($payment['status'] == 'Pending') {
@@ -65,8 +72,6 @@ if (($_SESSION["usersID"] == "")) {
                                 ?>
                             </tbody>
                         </table>
-                        <!-- End Table with stripped rows -->
-
                     </div>
                 </div>
 

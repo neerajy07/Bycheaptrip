@@ -46,7 +46,7 @@ include("./incluede/header.php") ?>
                                 <tbody>
                                     <?php
                                     $query = "SELECT *
-                                    FROM users WHERE status='active'";
+                                    FROM users WHERE status='active' ORDER BY id DESC";
                                     $res = mysqli_query($conn, $query);
                                     $a = 1;
                                     while ($row = mysqli_fetch_assoc($res)) {
