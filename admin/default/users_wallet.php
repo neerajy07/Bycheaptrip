@@ -20,7 +20,7 @@ include("./incluede/header.php") ?>
             </nav>
 
             <div class="pb-3">
-                <h1>Payment Details</h1>
+                <h3><b><i>Users Wallet Details</i></b></h3>
             </div>
             <div class="row">
                 <div class="col">
@@ -36,19 +36,20 @@ include("./incluede/header.php") ?>
                                             </label>
                                         </th>
                                         <th scope="col">Sr.No.</th>
-                                        <th scope="col">Payment Date</th>
-                                        <th scope="col">User Id</th>
-                                        <th scope="col">Transtion ID</th>
-                                        <th scope="col">User Ammount</th>
-                                        <th>Image</th>
-                                        <th scope="col">Status</th>
+                                        <td>Date</td>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email Id</th>
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Wallet Balance</th>
+                                        <!-- <th scope="col">Status</th> -->
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 $a = 1;
-                                $query = "SELECT * FROM `thailand_payment` ORDER BY pay_id DESC";
+                                $query = "SELECT * FROM `wallets`
+                                JOIN users ON wallets.user_id = users.email ORDER BY id_wallet DESC";
                                 $res = mysqli_query($conn, $query);
                                 while ($payment = mysqli_fetch_assoc($res)) {
                                 ?>
@@ -59,25 +60,14 @@ include("./incluede/header.php") ?>
                                                 <span class="custom-control-indicator"></span>
                                             </label>
                                         </th>
-                                        <td><?php echo $a ?></td>
-                                        <td><?php echo date('d-m-Y', strtotime($payment['created_date'])); ?></td>
-                                        <td><?php echo $payment['account_details'] ?></td>
-                                        <td> <?php echo $payment['payment_id'] ?></td>
-                                        <td> <?php echo $payment['user_ammount'] ?></td>
-                                        <td><a href="../../users/payment/<?php echo $payment['file'] ?>" target="_blank"><img src="../../users/payment/<?php echo $payment['file'] ?>" alt="" width="45px" height="45px" style="border-radius: 10px;"></a></td>
+                                        <td><?php echo $a; ?></td>
+                                        <td><?php echo date('d-m-Y', strtotime($payment['created_at'])); ?></td>
+                                        <td><?php echo $payment['name'] ?></td>
+                                        <td><?php echo $payment['email'] ?></td>
+                                        <td><?php echo $payment['phone'] ?></td>
+                                        <td><?php echo $payment['wallet_balance'] ?></td>
                                         <td>
-                                            <?php
-                                            if ($payment['status'] == 'Pending') {
-                                                echo "<span class='badge bg-warning'>Pending</span>";
-                                            } elseif ($payment['status'] == 'Accept') {
-                                                echo "<span class='badge bg-success'>Success</span>";
-                                            } else {
-                                                echo "<span class='badge bg-danger'>Failed</span>";
-                                            }
-                                            ?>
-                                        </td>
-                                        <td>
-                                             <a href="thailand_payment_details?pay_id=<?php echo $payment['pay_id'] ?>" class="btn btn-primary">Verify Payment</a>
+                                             <a href="wallet_details?user_id=<?php echo $payment['user_id'] ?>" class="btn btn-primary">View</a>
                                         </td>
                                     </tr>
                                     <?php
@@ -131,7 +121,6 @@ include("./incluede/header.php") ?>
     $(document).ready(function() {
         var table = $('[data-table]').DataTable({
             "columns": [
-                null,
                 null,
                 null,
                 null,

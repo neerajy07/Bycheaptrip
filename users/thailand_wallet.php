@@ -12,11 +12,11 @@ if (($_SESSION["usersID"] == "")) {
         <div class="row">
             <div class="col-lg-12">
                 <?php 
-                $sql="SELECT * FROM `wallets` where user_id='$_SESSION[userEmail]'";
+                $sql="SELECT * FROM `wallets` where user_id='$_SESSION[userEmail]' ";
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)){
               ?>
-                <div class="card mb-3 text-center"><b>Wallet</b>Balance:<?php echo $row['balance'] ?></div>
+                <div class="card mb-3 text-center"><b>Wallet</b>Balance:<?php echo $row['wallet_balance'] ?></div>
                 <?php 
                 }
                 ?>
@@ -29,41 +29,48 @@ if (($_SESSION["usersID"] == "")) {
                             <thead>
                                 <tr>
                                     <th>Sr.No.</th>
-                                    <th>Payment Date</th>
+                                    <th data-type="date" data-format="YYYY/DD/MM">Date</th>
                                     <th>Details</th>
-                                    <th>Ammount</th>
-                                    <th data-type="date" data-format="YYYY/DD/MM">Created Date</th>
+                                    <th>Debit</th>
+                                    <th>Credit</th>
+                                    <th>balance</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 $a = 1;
-                                $query = "SELECT * FROM `thailand_payment` where account_details='$_SESSION[userEmail]' And status='Accept' order by created_date desc";
+                                $query = "SELECT * FROM `transactions`
+                                JOIN `wallets` ON `transactions`.`wallet_id` = `wallets`.`id_wallet` where `user_id`='$_SESSION[userEmail]' ORDER BY `timestamp` DESC";
                                 $res = mysqli_query($conn, $query);
-                                while ($payment = mysqli_fetch_assoc($res)) {
+                                while ($trans = mysqli_fetch_assoc($res)) {
                                 ?>
                                     <tr>
                                         <td><?php echo $a ?></td>
-                                        <?php
-                                        $timestamp = strtotime($payment['payment_date']);
-                                        $formatted_date = date("d M Y", $timestamp);
-                                        ?>
-                                        <td><?php echo $formatted_date ?></td>
-                                        <td> <a href="thailand_payment_details?payment_id=<?php echo $payment['payment_id'] ?>"><?php echo $payment['description'] ?></a></td>
-                                        <td><?php echo $payment['user_ammount'] ?></td>
-                                        <!-- <td><?php echo $payment['created_date'] ?> </td> -->
-                                        <td><?php echo date('d-m-Y', strtotime($payment['created_date'])); ?></td>
+                                        <td><?php echo date('d-m-Y', strtotime($trans['timestamp'])); ?></td>
+                                        <td> <a href="thailand_wallet_details?id=<?php echo $trans['id'] ?>"><?php echo $trans['message'] ?></a></td>
+                                        <?php if($trans['type'] == 'debit') {?>
+                                        <td><?php echo $trans['amount'] ?></td>
+                                        <?php }else{ ?>
+                                        <?php } ?>
+                                        </td>
+                                        <td>
+                                        <?php if($trans['type'] == 'credit') {?>
+                                        <td><?php echo $trans['amount'] ?></td>
+                                        <?php }else{ ?>
+                                        <?php } ?>
+                                        </td>
+                                        <td><?php echo $trans['remaining_balance'] ?></td>
                                         <td>
                                             <?php
-                                            if ($payment['status'] == 'Pending') {
+                                            if ($trans['status'] == 'Pending') {
                                                 echo "<span class='badge bg-warning'>Pending</span>";
-                                            } elseif ($payment['status'] == 'Accept') {
+                                            } elseif ($trans['status'] == 'success') {
                                                 echo "<span class='badge bg-success'>Success</span>";
                                             } else {
                                                 echo "<span class='badge bg-danger'>Failed</span>";
                                             }
-                                            ?>
+                                             ?>
                                         </td>
                                     </tr>
                                 <?php

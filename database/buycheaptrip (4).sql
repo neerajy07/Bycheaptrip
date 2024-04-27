@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 01:35 AM
+-- Generation Time: Apr 27, 2024 at 04:23 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.1.17
 
@@ -237,13 +237,14 @@ CREATE TABLE `thailand_customers` (
 --
 
 INSERT INTO `thailand_customers` (`cust_id`, `customer_name`, `reff_id`, `email`, `phone`, `pax`, `package_inr`, `persion_inr`, `travel_date`, `create_date`, `status`, `account_id`) VALUES
-(85, 'manish', 'BCT892579', 'satyam@gmail.com', '9454969296', 1, 18190, 18190, '2024-04-21', '2024-04-19', 'pending', ''),
-(86, 'manish', 'BCT266119', 'solutionkey@gmail.com', '9454969296', 2, 48000, 24000, '2024-04-27', '2024-04-19', 'pending', ''),
-(87, 'Sydney Russell', 'BCT720272', 'qohe@mailinator.com', '22', 3, 0, 0, '1974-06-27', '2024-04-19', 'pending', ''),
-(88, 'Jemima Collier', 'BCT225342', 'fakymeca@mailinator.com', '4', 5, 0, 0, '1999-02-13', '2024-04-19', 'pending', 'jay@gmail.com'),
-(89, 'manish', 'BCT811781', 'manish01.bmdu@gmail.com', '9454969296', 2, 20450, 10225, '2024-04-23', '2024-04-19', 'pending', 'manish@gmail.com'),
-(90, 'pankaj', 'BCT928409', 'pankaj@gmail.com', '9876543210', 2, 7600, 3800, '2024-10-06', '2024-04-19', 'pending', 'manish@gmail.com'),
-(91, 'vinod', 'BCT056305', 'vinod@gmail.com', '6393805011', 2, 4550, 2275, '2024-04-27', '2024-04-19', 'pending', 'manish@gmail.com');
+(85, 'manish', 'BCT892579', 'satyam@gmail.com', '9454969296', 1, 18190, 18190, '2024-04-21', '2024-04-19', 'cancel', ''),
+(86, 'manish', 'BCT266119', 'solutionkey@gmail.com', '9454969296', 2, 48000, 24000, '2024-04-27', '2024-04-19', 'cancel', ''),
+(87, 'Sydney Russell', 'BCT720272', 'qohe@mailinator.com', '22', 3, 0, 0, '1974-06-27', '2024-04-19', 'cancel', ''),
+(88, 'Jemima Collier', 'BCT225342', 'fakymeca@mailinator.com', '4', 5, 0, 0, '1999-02-13', '2024-04-19', 'cancel', 'jay@gmail.com'),
+(89, 'manish', 'BCT811781', 'manish01.bmdu@gmail.com', '9454969296', 2, 20450, 10225, '2024-04-23', '2024-04-19', 'cancel', 'manish@gmail.com'),
+(90, 'pankaj', 'BCT928409', 'pankaj@gmail.com', '9876543210', 2, 7600, 3800, '2024-10-06', '2024-04-19', 'cancel', 'manish@gmail.com'),
+(91, 'vinod', 'BCT056305', 'vinod@gmail.com', '6393805011', 2, 4550, 2275, '2024-04-27', '2024-04-19', 'cancel', 'manish@gmail.com'),
+(92, 'manish', 'BCT741191', 'solutionkey@gmail.com', '9454969296', 1, 10719, 10719, '2024-04-24', '2024-04-20', 'cancel', 'jay@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -281,7 +282,47 @@ INSERT INTO `thailand_hotel` (`thailand_hotel_id`, `hotelcity_name`, `hotels`, `
 (258, '2', '20', '2000', 1, 1, '0', '', NULL, 'BCT928409', '2024-04-19 16:20:05', '2024-10-06', 'manish@gmail.com'),
 (259, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT928409', '2024-04-19 16:20:05', '2024-10-07', 'manish@gmail.com'),
 (260, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT056305', '2024-04-19 22:51:23', '2024-04-27', 'manish@gmail.com'),
-(261, '1', '15', '100', 1, 1, '1', '', NULL, 'BCT056305', '2024-04-19 22:51:23', '2024-04-28', 'manish@gmail.com');
+(261, '1', '15', '100', 1, 1, '1', '', NULL, 'BCT056305', '2024-04-19 22:51:23', '2024-04-28', 'manish@gmail.com'),
+(262, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT741191', '2024-04-20 15:59:04', '2024-04-24', 'jay@gmail.com'),
+(263, '2', '20', '2099', 1, 1, '0', '', NULL, 'BCT741191', '2024-04-20 15:59:04', '2024-04-25', 'jay@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thailand_payment`
+--
+
+CREATE TABLE `thailand_payment` (
+  `pay_id` int(11) NOT NULL,
+  `user_ammount` double NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `file` varchar(100) NOT NULL,
+  `payment_date` varchar(100) NOT NULL,
+  `payment_id` varchar(15) NOT NULL,
+  `debit` double DEFAULT NULL,
+  `credit` double DEFAULT NULL,
+  `final_ammount` double DEFAULT NULL,
+  `created_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `account_details` varchar(100) NOT NULL,
+  `status` enum('Pending','Accept','Denied','') NOT NULL DEFAULT 'Pending',
+  `reward` double DEFAULT NULL,
+  `feedback` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `thailand_payment`
+--
+
+INSERT INTO `thailand_payment` (`pay_id`, `user_ammount`, `description`, `file`, `payment_date`, `payment_id`, `debit`, `credit`, `final_ammount`, `created_date`, `account_details`, `status`, `reward`, `feedback`) VALUES
+(1, 1050, 'hgdhdgh', '662930822f4fd9.46205921.png', '2004-04-10', 'buy3885555', NULL, NULL, NULL, '2024-04-24 00:00:00', 'jay@gmail.com', 'Accept', NULL, ''),
+(2, 1050, 'hgdhdgh', '66293285a58411.26470654.png', '2004-04-10', 'buy0304035', NULL, NULL, NULL, '2024-04-24 12:25:41', 'jay@gmail.com', 'Denied', NULL, ''),
+(3, 1020, 'demo', '662942314a1176.95967554.png', '2024-04-19', 'buy0131472', NULL, NULL, NULL, '2024-04-24 13:32:33', 'jay@gmail.com', 'Pending', NULL, NULL),
+(4, 2000, 'payment successfull', '662ad9da1dba76.21067888.png', '2024-04-24', 'buy9779306', NULL, NULL, NULL, '2024-04-25 18:31:54', 'satyam@gmail.com', 'Denied', NULL, 'dhhhhh'),
+(5, 500, 'payment successfull', '662c1be5993493.64307872.png', '2024-04-25', 'buy5772795', NULL, NULL, NULL, '2024-04-26 17:25:57', 'satyam@gmail.com', 'Accept', NULL, ''),
+(6, 200, 'hgdhdgh', '662c36e80d26d4.26010629.png', '2024-04-26', 'buy6044207', NULL, NULL, NULL, '2024-04-26 19:21:12', 'satyam@gmail.com', 'Accept', NULL, NULL),
+(7, 10250, 'this is description', '662c37587615d7.27139746.png', '2024-04-28', 'buy2811348', NULL, NULL, NULL, '2024-04-26 19:23:04', 'satyam@gmail.com', 'Accept', NULL, NULL),
+(8, 400, 'demo', '662c3a70acc446.63213968.png', '2024-04-25', 'buy9884109', NULL, NULL, NULL, '2024-04-26 19:36:16', 'satyam@gmail.com', 'Accept', NULL, NULL),
+(9, 500, 'GHHGGHGH', '662c3d68790824.96670451.png', '2024-04-25', 'buy5151593', NULL, NULL, NULL, '2024-04-26 19:48:56', 'satyam@gmail.com', 'Accept', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -316,7 +357,8 @@ INSERT INTO `thailand_sightseeing` (`thailand_sight_id`, `sight_city`, `sightsee
 (171, '1', '200', '', '1', '2024-10-06', '', 'manish@gmail.com', 'BCT928409'),
 (172, '2', '150', '', '2', '2024-10-08', '', 'manish@gmail.com', 'BCT928409'),
 (173, '2', '150', '', '1', '2024-04-27', '', 'manish@gmail.com', 'BCT056305'),
-(174, '2', '150', '', '1', '2024-04-28', '', 'manish@gmail.com', 'BCT056305');
+(174, '2', '150', '', '1', '2024-04-28', '', 'manish@gmail.com', 'BCT056305'),
+(175, '1', '1520', '', '1', '2024-04-24', '', 'jay@gmail.com', 'BCT741191');
 
 -- --------------------------------------------------------
 
@@ -349,7 +391,70 @@ INSERT INTO `thailand_transport` (`thailand_transport_id`, `transport`, `prices`
 (196, '3', '', '1', '', '2024-04-25', 'manish@gmail.com', '5000', 'BCT811781'),
 (197, '4', '', '1', '', '2024-10-06', 'manish@gmail.com', '5000', 'BCT928409'),
 (198, '3', '', '1', '', '2024-04-27', 'manish@gmail.com', '2000', 'BCT056305'),
-(199, '3', '', '1', '', '2024-04-28', 'manish@gmail.com', '2000', 'BCT056305');
+(199, '3', '', '1', '', '2024-04-28', 'manish@gmail.com', '2000', 'BCT056305'),
+(200, '3', '', '1', '', '2024-04-24', 'jay@gmail.com', '5000', 'BCT741191'),
+(201, '3', '', '1', '', '2024-04-24', 'jay@gmail.com', '2000', 'BCT741191');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thailand_upload`
+--
+
+CREATE TABLE `thailand_upload` (
+  `upload_id` int(11) NOT NULL,
+  `file` varchar(200) NOT NULL,
+  `upload_details` varchar(255) NOT NULL,
+  `id_reff` varchar(100) NOT NULL,
+  `account_file_id` varchar(100) NOT NULL,
+  `reff_id` varchar(15) NOT NULL,
+  `create_date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `thailand_upload`
+--
+
+INSERT INTO `thailand_upload` (`upload_id`, `file`, `upload_details`, `id_reff`, `account_file_id`, `reff_id`, `create_date`) VALUES
+(75, '6626efa9ca5af5.00128318.png', 'sjhsusdus manish', 'BCT741191', 'jay@gmail.com', '', '2024-04-22'),
+(76, '6626f00f8c3f26.57139729.png', 'sjhsusdus manish', 'BCT741191', 'jay@gmail.com', '', '2024-04-22'),
+(77, '6628a91c68511_fd794cd2da78a7b3_Screenshot (19).png', 'pan card1', 'BCT811781', 'manish@gmail.com', '', '2024-04-22'),
+(78, '6626f16e272836.29549320.png', 'adhar card', 'BCT811781', 'manish@gmail.com', '', '2024-04-22'),
+(79, '6626f19b8d86b4.36858789.png', 'adhar card', 'BCT811781', 'manish@gmail.com', '', '2024-04-22'),
+(80, '6626f626c8f246.58285677.png', 'adhar card', 'BCT056305', 'manish@gmail.com', '', '2024-04-22');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `id` int(11) NOT NULL,
+  `wallet_id` int(11) NOT NULL,
+  `type` enum('credit','debit','reward') NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `message` text DEFAULT NULL,
+  `remaining_balance` decimal(10,2) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
+  `status` enum('pending','success','cancel','') NOT NULL DEFAULT 'success',
+  `transactions_id` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`id`, `wallet_id`, `type`, `amount`, `message`, `remaining_balance`, `timestamp`, `status`, `transactions_id`) VALUES
+(1, 5, 'credit', 100.00, 'Add balance', 100.00, '2024-04-25 03:19:48', 'success', ''),
+(2, 5, 'credit', 100.00, 'add balance', 200.00, '2024-04-25 03:21:04', 'success', ''),
+(3, 5, 'debit', 100.00, 'debit your balance 100 Rs', 100.00, '2024-04-26 16:19:29', 'success', ''),
+(4, 7, 'credit', 100.00, 'add balance', 100.00, '2024-04-26 17:25:30', 'success', ''),
+(5, 5, 'credit', 500.00, NULL, 0.00, '2024-04-26 23:18:41', 'success', 'buy5772795'),
+(6, 5, 'credit', 200.00, NULL, 0.00, '2024-04-26 23:21:35', 'success', 'buy6044207'),
+(7, 5, 'credit', 10250.00, NULL, 0.00, '2024-04-26 23:23:34', 'success', 'buy2811348'),
+(8, 5, 'credit', 400.00, NULL, 11950.00, '2024-04-26 23:36:32', 'success', 'buy9884109'),
+(9, 5, 'credit', 500.00, NULL, 12450.00, '2024-04-26 23:50:19', 'success', 'buy5151593');
 
 -- --------------------------------------------------------
 
@@ -424,13 +529,33 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `gender`, `phone`, `email`, `password`, `created_at`, `delete_at`, `status`, `feedback`) VALUES
-(15, 'Jai', 'male', '9454969291', 'jay@gmail.com', '123456', '2024-03-28 18:50:22', '', 'active', 'good user'),
-(16, 'Manish', 'male', '9454969290', 'manish@gmail.com', '12345', '2024-03-29 12:32:14', '', 'active', NULL),
-(17, 'Manish', 'male', '9454969298', 'manish1@gmail.com', '123456', '2024-03-29 12:33:59', '', 'reject', 'not carrect user'),
-(18, 'Manish', 'male', '9454969250', 'manish12@gmail.com', '123456', '2024-03-29 12:35:19', '', 'pending', NULL),
-(19, 'Keegan Macias', 'male', '9876543210', 'tara@mailinator.com', '123456', '2024-04-01 11:00:01', '', 'pending', NULL),
-(20, 'Bo Floyd', 'male', '9876542030', 'cevygamor@mailinator.com', '123456', '2024-04-01 11:01:35', '', 'pending', NULL),
-(21, 'Bo Floyd', 'male', '9876542031', 'cevygamor1@mailinator.com', '123456', '2024-04-01 11:03:23', '', 'pending', 'not verify');
+(22, 'Satyam', 'male', '9454969296', 'satyam@gmail.com', '123456', '2024-04-24 22:48:51', '', 'active', 'good user'),
+(23, 'Sivam', 'male', '9876543214', 'sivam@gmail.com', '123456', '2024-04-24 22:53:03', '', 'pending', NULL),
+(24, 'Manish Kumar', 'male', '9454969280', 'manish10@gmail.com', '123456', '2024-04-24 22:55:54', '', 'active', 'good user');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallets`
+--
+
+CREATE TABLE `wallets` (
+  `id_wallet` int(11) NOT NULL,
+  `user_id` varchar(100) NOT NULL,
+  `contact` varchar(15) NOT NULL,
+  `wallet_balance` decimal(10,2) DEFAULT 0.00,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wallets`
+--
+
+INSERT INTO `wallets` (`id_wallet`, `user_id`, `contact`, `wallet_balance`, `created_at`, `updated_at`) VALUES
+(5, 'satyam@gmail.com', '9454969296', 12450.00, '2024-04-25 02:48:51', '2024-04-26 23:50:19'),
+(6, 'sivam@gmail.com', '9876543214', 0.00, '2024-04-25 02:53:03', '2024-04-26 20:26:09'),
+(7, 'manish10@gmail.com', '9454969280', 100.00, '2024-04-25 02:55:54', '2024-04-26 17:18:54');
 
 --
 -- Indexes for dumped tables
@@ -498,6 +623,13 @@ ALTER TABLE `thailand_hotel`
   ADD PRIMARY KEY (`thailand_hotel_id`);
 
 --
+-- Indexes for table `thailand_payment`
+--
+ALTER TABLE `thailand_payment`
+  ADD PRIMARY KEY (`pay_id`),
+  ADD UNIQUE KEY `payment_id` (`payment_id`);
+
+--
 -- Indexes for table `thailand_sightseeing`
 --
 ALTER TABLE `thailand_sightseeing`
@@ -508,6 +640,19 @@ ALTER TABLE `thailand_sightseeing`
 --
 ALTER TABLE `thailand_transport`
   ADD PRIMARY KEY (`thailand_transport_id`);
+
+--
+-- Indexes for table `thailand_upload`
+--
+ALTER TABLE `thailand_upload`
+  ADD PRIMARY KEY (`upload_id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Wallet_manage` (`wallet_id`);
 
 --
 -- Indexes for table `transport`
@@ -525,7 +670,17 @@ ALTER TABLE `transport_category`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `phone` (`phone`);
+
+--
+-- Indexes for table `wallets`
+--
+ALTER TABLE `wallets`
+  ADD PRIMARY KEY (`id_wallet`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD KEY `phone` (`contact`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -583,25 +738,43 @@ ALTER TABLE `sightseeing`
 -- AUTO_INCREMENT for table `thailand_customers`
 --
 ALTER TABLE `thailand_customers`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `thailand_hotel`
 --
 ALTER TABLE `thailand_hotel`
-  MODIFY `thailand_hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=262;
+  MODIFY `thailand_hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
+
+--
+-- AUTO_INCREMENT for table `thailand_payment`
+--
+ALTER TABLE `thailand_payment`
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `thailand_sightseeing`
 --
 ALTER TABLE `thailand_sightseeing`
-  MODIFY `thailand_sight_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=175;
+  MODIFY `thailand_sight_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `thailand_transport`
 --
 ALTER TABLE `thailand_transport`
-  MODIFY `thailand_transport_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `thailand_transport_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+
+--
+-- AUTO_INCREMENT for table `thailand_upload`
+--
+ALTER TABLE `thailand_upload`
+  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `transport`
@@ -619,7 +792,23 @@ ALTER TABLE `transport_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `wallets`
+--
+ALTER TABLE `wallets`
+  MODIFY `id_wallet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD CONSTRAINT `Wallet_manage` FOREIGN KEY (`wallet_id`) REFERENCES `wallets` (`id_wallet`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
