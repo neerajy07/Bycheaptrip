@@ -114,6 +114,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "No results";
 }
+echo "\n";
 ?>
 *Transfer*
 <?php
@@ -157,28 +158,28 @@ if (mysqli_num_rows($result) > 0) {
                                         <div class="container">
                                             <div class="col-md-2"> &nbsp;</div>
                                             <div class="col-md-8">
-                                                <table>
+                                                <!-- <table>
                                                     <tr>
                                                         <td style="padding: 15px;">
                                                             <a id="aWhatsapp" name="aWhatsapp" href="https://wa.me/<?php echo $row['phone'] ?>" target="_blank" class="btn btn-primary">Open Whatsapp With Message</a>
                                                         </td>
                                                         <td style="padding: 15px;">
                                           
-                       <!-- <a href="calculator_b2b.php?elid=1&edid=36940" class="btn btn-primary"> -->
+                       <a href="calculator_b2b.php?elid=1&edid=36940" class="btn btn-primary">
                       Edit Information
                       </a>
                   </td>
-                                                        <!-- check_user_type_and_converted_type_and_payment_status_and_customer_id -->
+                                                        check_user_type_and_converted_type_and_payment_status_and_customer_id
                                                         <td>
                                                             <form action="" method="POST" id="send_confirmation_frm">
                       <button type="submit" name="send_confirmation" id="send_confirmation" class="btn btn-primary" ><i class="fa fa-envelope"></i> Send for Confirmation</button>                                
                     </form>  
                                                         </td>
 
-                                                        <!-- check_user_type_and_converted_type_and_payment_status -->
+                                                        check_user_type_and_converted_type_and_payment_status
 
                                                     </tr>
-                                                </table>
+                                                </table> -->
                                             </div>
                                         </div>
                                     </div><br><br><br><br><br>

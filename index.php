@@ -187,19 +187,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result_phone_check->num_rows > 0) {
             $errors["phone"] = "Phone number already exists.";
         }
+        // if (empty($errors)) {
+        //     // Insert user data into the users table
+        //     $user_sql = "INSERT INTO users (name, gender, email, phone, password) VALUES ('$name', '$gender', '$email', '$phone', '$password')";
+            
+        //     $wallet_sql = "INSERT INTO wallets (user_id, contact, wallet_balance) VALUES ('$email', '$phone', '$balance')";
+            
+        //     // Execute both SQL statements
+        //     if ($conn->query($user_sql) === TRUE && $conn->query($wallet_sql) === TRUE) {
+        //         echo "<script>alert('Registered successfully. Please verify your account then login in 24 hours .');
+        //         window.open('login','_self');
+        //         </script>";
+        //     } else {
+        //         echo "<script>alert('Error: " . $user_sql . "<br>" . $conn->error . "');</script>";
+        //         echo "<script>alert('Error: " . $wallet_sql . "<br>" . $conn->error . "');</script>";
+        //     }
         if (empty($errors)) {
+            // Begin transaction
+            $conn->begin_transaction();
+        
             // Insert user data into the users table
             $user_sql = "INSERT INTO users (name, gender, email, phone, password) VALUES ('$name', '$gender', '$email', '$phone', '$password')";
-            
+        
             // Insert wallet data into the wallets table
-            $wallet_sql = "INSERT INTO wallets (user_id, contact, balance) VALUES ('$email', '$phone', '$balance')";
-            
+            $wallet_sql = "INSERT INTO wallets (user_id, contact, wallet_balance) VALUES ('$email', '$phone', '$balance')";
+        
             // Execute both SQL statements
-            if ($conn->query($user_sql) === TRUE && $conn->query($wallet_sql) === TRUE) {
+            $user_result = $conn->query($user_sql);
+            $wallet_result = $conn->query($wallet_sql);
+        
+            // Check if both inserts were successful
+            if ($user_result === TRUE && $wallet_result === TRUE) {
+                // Commit transaction if both inserts were successful
+                $conn->commit();
                 echo "<script>alert('Registered successfully. Please verify your account then login in 24 hours .');
                 window.open('login','_self');
                 </script>";
             } else {
+                // Rollback transaction if either insert failed
+                $conn->rollback();
                 echo "<script>alert('Error: " . $user_sql . "<br>" . $conn->error . "');</script>";
                 echo "<script>alert('Error: " . $wallet_sql . "<br>" . $conn->error . "');</script>";
             }

@@ -93,15 +93,15 @@
                 </a>
               </li>
               <li class="sidebar-nav-item">
-                <!-- <a href="../default/all_slider" class="sidebar-nav-link">
+                <a href="../default/final_customer" class="sidebar-nav-link">
                   <span class="sidebar-nav-abbr">
                     <i data-feather="edit-3"></i>
                   </span>
                   <span class="sidebar-nav-name">
-                    Show Slider
+                    Final Customer 
                   </span>
                 </a>
-              </li> -->
+              </li>
             </ul>
           </li>
           <!-- part1 Home -->
@@ -439,4 +439,34 @@
               <!-- footer -->
             </ul>
             <!-- part Setting end -->
+            <li class="sidebar-nav-item">
+                <a href="../default/users_wallet" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    <i data-feather="disc"></i>
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Wallet Details
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="../default/thailand_payment" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    <i data-feather="target"></i>
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Request Payments
+                  </span>
+                </a>
+              </li>
+              <li class="sidebar-nav-item">
+                <a href="../default/manage_offer" class="sidebar-nav-link">
+                  <span class="sidebar-nav-abbr">
+                    <i data-feather="target"></i>
+                  </span>
+                  <span class="sidebar-nav-name">
+                    Manage Offers
+                  </span>
+                </a>
+              </li>
       </div><!-- Sidebar End -->

@@ -16,12 +16,12 @@ if (($_SESSION["usersID"] == "")) {
                 $result = mysqli_query($conn, $sql);
                 while($row = mysqli_fetch_assoc($result)){
               ?>
-                <div class="card mb-3 text-center"><b>Wallet</b>Balance:<?php echo $row['wallet_balance'] ?></div>
+                <!-- <div class="card mb-3 text-center"><b>Wallet</b>Balance:<?php echo $row['wallet_balance'] ?></div> -->
                 <?php 
                 }
                 ?>
                 <div class="card">
-                    <div class="card-header"><a href="thailand_payment_form" class="btn btn-primary float-end"><i class="bi bi-plus-circle"></i> Add Payment</a></div>
+                    <!-- <div class="card-header"><a href="thailand_payment_form" class="btn btn-primary float-end"><i class="bi bi-plus-circle"></i> Add Payment</a></div> -->
                     <div class="card-body">
                         <h5 class="card-title">Payment History</h5>
                         <!-- Table with stripped rows -->
@@ -31,9 +31,9 @@ if (($_SESSION["usersID"] == "")) {
                                     <th>Sr.No.</th>
                                     <th data-type="date" data-format="YYYY/DD/MM">Date</th>
                                     <th>Details</th>
-                                    <th>Debit</th>
-                                    <th>Credit</th>
-                                    <th>balance</th>
+                                    <!-- <th>Debit</th> -->
+                                    <th>Reward</th>
+                                    <!-- <th>balance</th> -->
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -44,22 +44,23 @@ if (($_SESSION["usersID"] == "")) {
                                 JOIN `wallets` ON `transactions`.`wallet_id` = `wallets`.`id_wallet` where `user_id`='$_SESSION[userEmail]' ORDER BY `timestamp` DESC";
                                 $res = mysqli_query($conn, $query);
                                 while ($trans = mysqli_fetch_assoc($res)) {
+                                    if($trans['type'] == 'reward'){
                                 ?>
                                     <tr>
                                         <td><?php echo $a ?></td>
                                         <td><?php echo date('d-m-Y', strtotime($trans['timestamp'])); ?></td>
                                         <td> <a href=""><?php echo $trans['message'] ?></a></td>
-                                        <?php if($trans['type'] == 'debit') {?>
+                                        <!-- <?php if($trans['type'] == 'debit') {?>
                                         <td><?php echo $trans['amount'] ?></td>
                                         <?php }else{ ?>
                                             <td></td>
-                                        <?php } ?>
+                                        <?php } ?> -->
                                         <?php if ($trans['type'] == 'credit' || $trans['type'] == 'reward') { ?>
-                                        <td><?php echo $trans['amount'] ?></td>
+                                        <td class="text-success"><b><?php echo $trans['amount'] ?></b></td>
                                         <?php }else{ ?>
                                             <td></td>
                                         <?php } ?>
-                                        <td><?php echo $trans['remaining_balance'] ?></td>
+                                        <!-- <td><?php echo $trans['remaining_balance'] ?></td> -->
                                         <td>
                                             <?php
                                             if ($trans['status'] == 'Pending') {
@@ -73,7 +74,9 @@ if (($_SESSION["usersID"] == "")) {
                                         </td>
                                     </tr>
                                 <?php
+                                    
                                     $a++;
+                                        }
                                 }
                                 ?>
                             </tbody>

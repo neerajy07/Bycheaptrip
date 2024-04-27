@@ -14,94 +14,6 @@ if (isset($_GET['upload_id'])) {
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
 ?>
-<?php 
-// Check if the form is submitted
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // Check if the 'update' button is clicked
-//     if (isset($_POST['update'])) {
-//         // Check if file is uploaded
-//         if (isset($_FILES['file'])) {
-//             // File details
-//             $file_name = $_FILES['file']['name'];
-//             $file_temp = $_FILES['file']['tmp_name'];
-//             $file_size = $_FILES['file']['size'];
-//             $file_error = $_FILES['file']['error'];
-//             $upload_dir = "./uploads/";
-//             $upload_id = $_POST['upload_id'];
-//             $upload_details = $_POST['upload_details'];
-//             if ($file_error === 0) {
-//                 $unique_file_name = uniqid() . '_' . bin2hex(random_bytes(8)) . '_' . $file_name;
-//                 move_uploaded_file($file_temp, $upload_dir . $unique_file_name);
-//                 $sql = "UPDATE thailand_upload SET file='$unique_file_name', upload_details='$upload_details' WHERE upload_id='$upload_id'";
-//                 if ($conn->query($sql) === TRUE) {
-//                     echo '<script>alert("Record updated successfully");</script>';
-//                 } else {
-//                     echo '<script>alert("Error updating record: ' . $conn->error . '");</script>';
-//                 }
-//                 $conn->close();
-//             } else {
-//                 echo '<script>alert("Error uploading file");</script>';
-//             }
-//         } else {
-//             echo '<script>alert("No file uploaded");</script>';
-//         }
-//     }
-// }
-
-
-?>
-<?php
-// Check if the form is submitted
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     // Check if the 'update' button is clicked
-//     if (isset($_POST['update'])) {
-//         // Check if file is uploaded
-//         if (isset($_FILES['file'])) {
-//             // File details
-//             $file_name = $_FILES['file']['name'];
-//             $file_temp = $_FILES['file']['tmp_name'];
-//             $file_size = $_FILES['file']['size'];
-//             $file_error = $_FILES['file']['error'];
-//             $upload_dir = "./uploads/";
-//             $upload_id = $_POST['upload_id'];
-//             $upload_details = $_POST['upload_details'];
-//             // Check if a file is uploaded successfully
-//             if ($file_error === 0) {
-//                 // Delete the old image if it exists
-//                 $old_file = $upload_dir . $row['file'];
-//                 if (file_exists($old_file)) {
-//                     unlink($old_file);
-//                 }
-//                 // Generate a unique filename for the new image
-//                 $unique_file_name = uniqid() . '_' . bin2hex(random_bytes(8)) . '_' . $file_name;
-//                 // Move uploaded file to the destination directory with the new unique filename
-//                 move_uploaded_file($file_temp, $upload_dir . $unique_file_name);
-//                 // Update both file and content
-//                 $sql = "UPDATE thailand_upload SET file='$unique_file_name', upload_details='$upload_details' WHERE upload_id='$upload_id'";
-//                 if ($conn->query($sql) === TRUE) {
-//                     echo '<script>alert("Record updated successfully");</script>';
-//                 } else {
-//                     echo '<script>alert("Error updating record: ' . $conn->error . '");</script>';
-//                 }
-//                 $conn->close();
-//             } else {
-//                 echo '<script>alert("Error uploading file");</script>';
-//             }
-//         } else {
-//             // If no file is uploaded, only update the content
-//             $upload_id = $_POST['upload_id'];
-//             $upload_details = $_POST['upload_details'];
-//             $sql = "UPDATE thailand_upload SET upload_details='$upload_details' WHERE upload_id='$upload_id'";
-//             if ($conn->query($sql) === TRUE) {
-//                 echo '<script>alert("Record updated successfully");</script>';
-//             } else {
-//                 echo '<script>alert("Error updating record: ' . $conn->error . '");</script>';
-//             }
-//             $conn->close();
-//         }
-//     }
-// }
-?>
 <?php
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -117,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $upload_dir = "./uploads/";
             $upload_id = $_POST['upload_id'];
             $upload_details = $_POST['upload_details'];
+            $reff_id=$_POST['id_reff'];
             // Check if a file is uploaded successfully
             if ($file_error === 0) {
                 // Generate a unique filename
@@ -126,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Update both file and content
                 $sql = "UPDATE thailand_upload SET file='$unique_file_name', upload_details='$upload_details' WHERE upload_id='$upload_id'";
                 if ($conn->query($sql) === TRUE) {
-                    echo '<script>alert("Record updated successfully"); window.location.href="thailand_upload.php?id_reff=<?php echo $id_reff ?>";</script>';
+                    echo '<script>alert("Record updated successfully"); window.location.href="thailand_upload.php?reff_id='.$reff_id.'";</script>';
                 } else {
                     echo '<script>alert("Error updating record: ' . $conn->error . '");</script>';
                 }
@@ -140,7 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $upload_details = $_POST['upload_details'];
             $sql = "UPDATE thailand_upload SET upload_details='$upload_details' WHERE upload_id='$upload_id'";
             if ($conn->query($sql) === TRUE) {
-                echo '<script>alert("Record updated successfully"); window.location.href="thailand_upload.php?id_reff=<?php echo $id_reff ?>";</script>';
+                // echo '<script>alert("Record updated successfully"); window.location.href="thailand_upload.php?reff_id=$reff_id";</script>';
+                echo '<script>alert("Record updated successfully"); window.location.href="thailand_upload.php?reff_id=' . $reff_id . '";</script>';
             } else {
                 echo '<script>alert("Error updating record: ' . $conn->error . '");</script>';
             }
@@ -172,11 +86,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     <h5 class="card-title">File Upload Form</h5>
                                     <form action="" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="upload_id" value="<?php echo $row['upload_id'] ?>">
+                                        <input type="hidden" name="id_reff" value="<?php echo $row['id_reff'] ?>">
                                         <div class="row mb-3">
                                             <label for="inputNumber" class="col-sm-3 col-form-label">File Upload</label>
                                             <div class="col-sm-9">
                                                 <input class="form-control m-2" type="file" id="formFile" name="file">
-                                                <a href="<?php echo "./uploads/" . $row['file']; ?>" target="_blank" class=""><img src="<?php echo "./uploads/" . $row['file']; ?>" width="300" height="150" alt="Uploaded Image"></a>
+                                                <a href="<?php echo "./uploads/" . $row['file']; ?>" target="_blank" class=""><img src="<?php echo "./uploads/" . $row['file']; ?>" width="300" height="150" alt="Pdf Download"></a>
                                             </div>
                                         </div>
                                         <div class="row mb-3">

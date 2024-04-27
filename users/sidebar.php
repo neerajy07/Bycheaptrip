@@ -182,12 +182,12 @@
 
        <!-- <li class="nav-heading">Pages</li> -->
 
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link collapsed" href="final_cust">
                 <i class="bi bi-person">Final Customer</i>
                 <span></span>
             </a>
-        </li>
+        </li> -->
         
         <li class="nav-item">
             <a class="nav-link collapsed" href="thailand_payment">
@@ -197,11 +197,22 @@
         </li>
         <li class="nav-item">
             <a class="nav-link collapsed" href="thailand_wallet">
-                <i class="bi bi-envelope"></i>
+            <i class="bi bi-question-circle"></i>
                 <span>Wallet</span>
             </a>
         </li>
-
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="reward">
+                <i class="bi bi-card-list"></i>
+                <span>Reward</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="final_cust">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Final Customer</span>
+            </a>
+        </li>
         <!--  <li class="nav-item">
             <a class="nav-link collapsed" href="pages-faq.html">
                 <i class="bi bi-question-circle"></i>
@@ -209,14 +220,6 @@
             </a>
         </li>
 
-       
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-register.html">
-                <i class="bi bi-card-list"></i>
-                <span>Register</span>
-            </a>
-        </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="pages-login.html">
