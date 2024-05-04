@@ -27,37 +27,81 @@ include("./incluede/header.php") ?>
     }
 </style>
 <?php
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $tsight_id = isset($_POST['tsight_id']) ? $_POST['tsight_id'] : '';
+//     $sight_name = isset($_POST['sight_name']) ? $_POST['sight_name'] : '';
+//     $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
+//     $errors = [];
+//     if ($tsight_id == 'disabled') {
+//         $errors[] = "Please select a sightSeeing.";
+//     }
+   
+//     if (empty($errors)) {
+//     $query = "INSERT INTO sightseeing (tsight_id,sight_name,prices) VALUES (?, ?, ?)";
+//     $stmt = mysqli_prepare($conn, $query);
+//     mysqli_stmt_bind_param($stmt, "iss", $tsight_id, $sight_name, $prices);
+
+//     if (mysqli_stmt_execute($stmt)) {
+//         echo "<script>alert('Data inserted successfully.');</script>";
+//     } else {
+//         echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
+//     }
+//     mysqli_stmt_close($stmt);
+//     } else {
+//         foreach ($errors as $error) {
+//             echo "<script>alert('Error: $error');</script>";
+//         }
+//     }
+// }    
+?>
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tsight_id = isset($_POST['tsight_id']) ? $_POST['tsight_id'] : '';
     $sight_name = isset($_POST['sight_name']) ? $_POST['sight_name'] : '';
     $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
     $errors = [];
+
+    // Check if sightSeeing is selected
     if ($tsight_id == 'disabled') {
         $errors[] = "Please select a sightSeeing.";
     }
-    // if (empty($category_name)) {
-    //     $errors[] = "Category name is required.";
-    // }
-    // if (empty($prices)) {
-    //     $errors[] = "Price is required.";
-    // }
-    if (empty($errors)) {
-    $query = "INSERT INTO sightseeing (tsight_id,sight_name,prices) VALUES (?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "iss", $tsight_id, $sight_name, $prices);
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "<script>alert('Data inserted successfully.');</script>";
-    } else {
-        echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
+    // Check if prices field is not empty
+    if (empty($prices)) {
+        $errors[] = "Please enter prices.";
+    }
+
+    // Check if prices are unique
+    $query = "SELECT COUNT(*) AS count FROM sightseeing WHERE prices = ?";
+    $stmt = mysqli_prepare($conn, $query);
+    mysqli_stmt_bind_param($stmt, "s", $prices);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $row = mysqli_fetch_assoc($result);
+    if ($row['count'] > 0) {
+        $errors[] = "Prices already exist. Please enter unique prices.";
     }
     mysqli_stmt_close($stmt);
+
+    if (empty($errors)) {
+        // Insert data into the database
+        $query = "INSERT INTO sightseeing (tsight_id, sight_name, prices) VALUES (?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "iss", $tsight_id, $sight_name, $prices);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('Data inserted successfully.');</script>";
+        } else {
+            echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
+        }
+        mysqli_stmt_close($stmt);
     } else {
+        // Display errors
         foreach ($errors as $error) {
             echo "<script>alert('Error: $error');</script>";
         }
     }
-}    
+}
 ?>
 
 <div class="adminx-content">

@@ -33,7 +33,6 @@ function sanitize_input($conn, $data)
     $data = mysqli_real_escape_string($conn, $data);
     return $data;
 }
-
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $hcategory_id = $_POST['hcategory_id'];
     $category_name = sanitize_input($conn, $_POST['category_name']);
@@ -42,16 +41,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     // Perform input validation here if needed
 
+    // Check if the price is unique
+    $check_price_query = "SELECT * FROM hotel_categories WHERE prices = '$prices' AND hcategory_id != $hcategory_id";
+    $check_price_result = mysqli_query($conn, $check_price_query);
+    if (mysqli_num_rows($check_price_result) > 0) {
+        echo "<script>alert('Price must be all Ready exists.'); window.location.href = 'hotel_category_update?hcategory_id=$hcategory_id';</script>";
+        exit(); // Stop further execution
+    }
+
     // Update the hotel in the database
-    $update_query = "UPDATE hotel_categories SET category_name = '$category_name',prices = '$prices', hc_id = '$hc_id' WHERE hcategory_id = $hcategory_id";
+    $update_query = "UPDATE hotel_categories SET category_name = '$category_name', prices = '$prices', hc_id = '$hc_id' WHERE hcategory_id = $hcategory_id";
     if (mysqli_query($conn, $update_query)) {
-        echo "<script>alert(' updated successfully.');
-        window.location.href = 'hotel_category_all';
-        </script>";
+        echo "<script>alert('Updated successfully.'); window.location.href = 'hotel_category_all';</script>";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
-} elseif (isset($_GET['hcategory_id'])) {
+}elseif (isset($_GET['hcategory_id'])) {
     $hcategory_id = $_GET['hcategory_id'];
 
     // Retrieve hotel details from the database
@@ -59,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $result = mysqli_query($conn, $query);
     $hotel = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
-} else {
+} else{
     header("Location: hotel_category_all");
     exit;
 }

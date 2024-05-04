@@ -30,7 +30,7 @@ include("./incluede/header.php") ?>
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tcity_id = isset($_POST['tcity_id']) ? $_POST['tcity_id'] : '';
     $transport_name = isset($_POST['transport_name']) ? $_POST['transport_name'] : '';
-    $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
+    // $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
     $errors = [];
     if ($tcity_id == 'disabled') {
         $errors[] = "Please select a City.";
@@ -42,9 +42,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     $errors[] = "Price is required.";
     // }
     if (empty($errors)) {
-    $query = "INSERT INTO transport (tcity_id,transport_name,prices) VALUES (?, ?, ?)";
+    $query = "INSERT INTO transport (tcity_id,transport_name) VALUES (?, ?)";
     $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "iss", $tcity_id, $transport_name, $prices);
+    mysqli_stmt_bind_param($stmt, "is", $tcity_id, $transport_name);
 
     if (mysqli_stmt_execute($stmt)) {
         echo "<script>alert('Data inserted successfully.');</script>";

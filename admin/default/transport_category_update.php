@@ -27,10 +27,6 @@ include("./incluede/header.php") ?>
     }
 </style>
 <?php
-// Assuming you have already established a database connection
-// $conn = mysqli_connect("localhost", "username", "password", "database");
-
-// Function to sanitize input
 function sanitize_input($conn, $data)
 {
     $data = trim($data);
@@ -39,18 +35,30 @@ function sanitize_input($conn, $data)
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $tranport_cat_id= $_POST['tranport_cat_id'];
-    $transport_category = sanitize_input($conn, $_POST['transport_category']);
-    $transref_id = sanitize_input($conn, $_POST['transref_id']);
-    $prices= sanitize_input($conn, $_POST['prices']);
-    $update_query = "UPDATE transport_category SET transport_category = '$transport_category',prices = '$prices', transref_id = '$transref_id' WHERE tranport_cat_id= $tranport_cat_id";
-    if (mysqli_query($conn, $update_query)) {
-        echo "<script>alert(' updated successfully.');
-        window.location.href = 'transport_category_all';
-        </script>";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+$tranport_cat_id = $_POST['tranport_cat_id'];
+$transport_category = sanitize_input($conn, $_POST['transport_category']);
+$transref_id = sanitize_input($conn, $_POST['transref_id']);
+$prices = sanitize_input($conn, $_POST['prices']);
+
+// Check if prices are unique
+$check_query = "SELECT * FROM transport_category WHERE prices = '$prices' AND tranport_cat_id != $tranport_cat_id";
+$result = mysqli_query($conn, $check_query);
+if (mysqli_num_rows($result) > 0) {
+    echo "<script>alert('Prices must be unique. Please enter a different price.');
+    window.location.href = 'transport_category_update?tranport_cat_id=$tranport_cat_id';
+    </script>";
+    exit(); // Exit script if prices are not unique
+}
+
+$update_query = "UPDATE transport_category SET transport_category = '$transport_category', prices = '$prices', transref_id = '$transref_id' WHERE tranport_cat_id = $tranport_cat_id";
+
+if (mysqli_query($conn, $update_query)) {
+    echo "<script>alert('Updated successfully.');
+    window.location.href = 'transport_category_all';
+    </script>";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
 } elseif (isset($_GET['tranport_cat_id'])) {
     $tranport_cat_id= $_GET['tranport_cat_id'];
 

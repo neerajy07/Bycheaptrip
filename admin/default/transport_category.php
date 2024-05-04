@@ -27,37 +27,68 @@ include("./incluede/header.php") ?>
     }
 </style>
 <?php
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $transref_id = isset($_POST['transref_id']) ? $_POST['transref_id'] : '';
+//     $transport_category = isset($_POST['transport_category']) ? $_POST['transport_category'] : '';
+//     $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
+//     $errors = [];
+//     if ($transref_id == 'disabled') {
+//         $errors[] = "Please select a transport.";
+//     }
+//     if (empty($errors)) {
+//     $query = "INSERT INTO transport_category (transref_id,transport_category,prices) VALUES (?, ?, ?)";
+//     $stmt = mysqli_prepare($conn, $query);
+//     mysqli_stmt_bind_param($stmt, "iss", $transref_id, $transport_category, $prices);
+
+//     if (mysqli_stmt_execute($stmt)) {
+//         echo "<script>alert('Data inserted successfully.');</script>";
+//     } else {
+//         echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
+//     }
+//     mysqli_stmt_close($stmt);
+//     } else {
+//         foreach ($errors as $error) {
+//             echo "<script>alert('Error: $error');</script>";
+//         }
+//     }
+// }    
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $transref_id = isset($_POST['transref_id']) ? $_POST['transref_id'] : '';
     $transport_category = isset($_POST['transport_category']) ? $_POST['transport_category'] : '';
     $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
     $errors = [];
-    if ($transref_id == 'disabled') {
-        $errors[] = "Please select a transport.";
-    }
-    // if (empty($transport_category)) {
-    //     $errors[] = "Category name is required.";
-    // }
-    // if (empty($prices)) {
-    //     $errors[] = "Price is required.";
-    // }
-    if (empty($errors)) {
-    $query = "INSERT INTO transport_category (transref_id,transport_category,prices) VALUES (?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "iss", $transref_id, $transport_category, $prices);
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "<script>alert('Data inserted successfully.');</script>";
-    } else {
-        echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
+    // Check if the price already exists
+    $query_check_price = "SELECT COUNT(*) FROM transport_category WHERE prices = ?";
+    $stmt_check_price = mysqli_prepare($conn, $query_check_price);
+    mysqli_stmt_bind_param($stmt_check_price, "s", $prices);
+    mysqli_stmt_execute($stmt_check_price);
+    mysqli_stmt_bind_result($stmt_check_price, $price_count);
+    mysqli_stmt_fetch($stmt_check_price);
+    mysqli_stmt_close($stmt_check_price);
+
+    if ($price_count > 0) {
+        $errors[] = "Price already exists. Please enter a unique price.";
     }
-    mysqli_stmt_close($stmt);
+
+    if (empty($errors)) {
+        $query = "INSERT INTO transport_category (transref_id, transport_category, prices) VALUES (?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "iss", $transref_id, $transport_category, $prices);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('Data inserted successfully.');</script>";
+        } else {
+            echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
+        }
+        mysqli_stmt_close($stmt);
     } else {
         foreach ($errors as $error) {
             echo "<script>alert('Error: $error');</script>";
         }
     }
-}    
+}
+
 ?>
 
 <div class="adminx-content">

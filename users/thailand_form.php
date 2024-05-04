@@ -2746,7 +2746,7 @@ if (($_SESSION["usersID"] == "")) {
                                 </tr>
                                 <tr>
                                     <th>Total THB:</th>
-                                    <td><input type="text" name="" id="totalthb" readonly />
+                                    <td><input type="text" name="thb" id="totalthb" readonly />
                     </div>
                     </td>
                     </tr>

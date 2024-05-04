@@ -19,9 +19,10 @@ try {
     $pax = mysqli_real_escape_string($conn, $_POST['pax']);
     $package_inr = mysqli_real_escape_string($conn, $_POST['package_inr']);
     $persion_inr = mysqli_real_escape_string($conn, $_POST['persion_inr']);
+    $thb = mysqli_real_escape_string($conn, $_POST['thb']);
 
-    $sql_customer = "INSERT INTO thailand_customers (customer_name, email, phone, travel_date, pax, reff_id, package_inr, persion_inr, account_id) 
-                     VALUES ('$customer_name', '$email', '$phone', '$travel_date', '$pax', '$random_number', '$package_inr', '$persion_inr', '$account_id')";
+    $sql_customer = "INSERT INTO thailand_customers (customer_name, email, phone, travel_date, pax, reff_id, package_inr, persion_inr, account_id,thb) 
+                     VALUES ('$customer_name', '$email', '$phone', '$travel_date', '$pax', '$random_number', '$package_inr', '$persion_inr', '$account_id','$thb')";
     mysqli_query($conn, $sql_customer);
 
     for ($i = 0; $i < count($_POST['hotelcity_name']); $i++) {

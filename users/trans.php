@@ -6,7 +6,7 @@ if(isset($_POST['city_id'])) {
     $city_id = $_POST['city_id'];
 
     // Query to select hotels for the given city_id
-    $query = "SELECT trans_id, transport_name, prices FROM transport WHERE tcity_id='" . $city_id . "' ORDER BY transport_name ASC";
+    $query = "SELECT trans_id, transport_name FROM transport WHERE tcity_id='" . $city_id . "' ORDER BY transport_name ASC";
 
     // Execute the query
     $result = mysqli_query($conn, $query);

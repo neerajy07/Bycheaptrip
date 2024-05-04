@@ -41,7 +41,7 @@ include("./incluede/header.php") ?>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    $query = "SELECT transport.trans_id, transport.transport_name,transport.prices,transport.tcity_id,cities.city_name
+                                    $query = "SELECT transport.trans_id, transport.transport_name,transport.tcity_id,cities.city_name
                                     FROM transport
                                     JOIN cities ON transport.tcity_id = cities.city_id
                                     ORDER BY cities.city_name ASC";

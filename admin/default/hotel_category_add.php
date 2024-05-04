@@ -32,32 +32,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $category_name = isset($_POST['category_name']) ? $_POST['category_name'] : '';
     $prices = isset($_POST['prices']) ? $_POST['prices'] : '';
     $errors = [];
+    
+    // Check if prices is empty
+    if (empty($prices)) {
+        $errors[] = "Please enter prices.";
+    }
+    
+    // Check if prices is unique
+    $query_check_unique_prices = "SELECT COUNT(*) FROM hotel_categories WHERE prices = ?";
+    $stmt_check_unique_prices = mysqli_prepare($conn, $query_check_unique_prices);
+    mysqli_stmt_bind_param($stmt_check_unique_prices, "s", $prices);
+    mysqli_stmt_execute($stmt_check_unique_prices);
+    mysqli_stmt_bind_result($stmt_check_unique_prices, $count);
+    mysqli_stmt_fetch($stmt_check_unique_prices);
+    mysqli_stmt_close($stmt_check_unique_prices);
+    
+    if ($count > 0) {
+        $errors[] = "Prices already exist. Please enter unique prices.";
+    }
+
     if ($hc_id == 'disabled') {
         $errors[] = "Please select a hotel.";
     }
-    // if (empty($category_name)) {
-    //     $errors[] = "Category name is required.";
-    // }
-    // if (empty($prices)) {
-    //     $errors[] = "Price is required.";
-    // }
-    if (empty($errors)) {
-    $query = "INSERT INTO hotel_categories (hc_id,category_name,prices) VALUES (?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "iss", $hc_id, $category_name, $prices);
 
-    if (mysqli_stmt_execute($stmt)) {
-        echo "<script>alert('Data inserted successfully.');</script>";
-    } else {
-        echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
-    }
-    mysqli_stmt_close($stmt);
+    if (empty($errors)) {
+        $query = "INSERT INTO hotel_categories (hc_id, category_name, prices) VALUES (?, ?, ?)";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "iss", $hc_id, $category_name, $prices);
+
+        if (mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('Data inserted successfully.');</script>";
+        } else {
+            echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
+        }
+        mysqli_stmt_close($stmt);
     } else {
         foreach ($errors as $error) {
             echo "<script>alert('Error: $error');</script>";
         }
     }
-}    
+}  
 ?>
 
 <div class="adminx-content">

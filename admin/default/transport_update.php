@@ -40,8 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
 
     $tcity_id = sanitize_input($conn, $_POST['tcity_id']);
 
-    $prices = sanitize_input($conn, $_POST['prices']);
-    $update_query = "UPDATE transport SET transport_name = '$transport_name',prices = '$prices', tcity_id = '$tcity_id' WHERE trans_id = $trans_id";
+    $update_query = "UPDATE transport SET transport_name = '$transport_name', tcity_id = '$tcity_id' WHERE trans_id = $trans_id";
     if (mysqli_query($conn, $update_query)) {
         echo "<script>alert(' updated successfully.');
         window.location.href = 'transport_all';

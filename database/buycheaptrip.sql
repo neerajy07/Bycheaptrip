@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2024 at 01:25 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.1.17
+-- Generation Time: May 04, 2024 at 09:24 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -155,8 +155,8 @@ CREATE TABLE `hotel_categories` (
 
 INSERT INTO `hotel_categories` (`hcategory_id`, `category_name`, `hc_id`, `prices`) VALUES
 (2, 'Economy1', 1, 15000),
-(17, 'VIP', 1, 15000),
-(18, 'Economy', 1, 1500),
+(17, 'VIP', 1, 15099),
+(18, 'Economy', 1, 15001),
 (19, 'Economy', 15, 100),
 (20, 'Super DLX', 1, 10000),
 (21, 'Economy', 12, 1000),
@@ -165,7 +165,8 @@ INSERT INTO `hotel_categories` (`hcategory_id`, `category_name`, `hc_id`, `price
 (24, 'Economy', 20, 2099),
 (25, 'VIP', 12, 2000),
 (26, 'Economy', 19, 200),
-(27, 'VIP', 19, 300);
+(27, 'VIP', 19, 300),
+(29, 'VIP', 1, 1899);
 
 -- --------------------------------------------------------
 
@@ -226,11 +227,12 @@ CREATE TABLE `sightseeing` (
 INSERT INTO `sightseeing` (`sight_id`, `sight_name`, `prices`, `tsight_id`) VALUES
 (1, 'rever Front2', 1520, 1),
 (4, 'rever Front2', 15000, 3),
-(5, 'rever Front3', 150000, 4),
+(5, 'rever Front3', 1505, 4),
 (6, 'rever Front2', 200, 1),
 (7, 'rever Front3', 300, 1),
 (8, 'rever Front2', 3000, 2),
-(9, 'rever Front3', 150, 2);
+(9, 'rever Front3', 150, 2),
+(11, 'rever Front', 2005, 1);
 
 -- --------------------------------------------------------
 
@@ -250,24 +252,16 @@ CREATE TABLE `thailand_customers` (
   `travel_date` varchar(50) NOT NULL,
   `create_date` date NOT NULL DEFAULT current_timestamp(),
   `status` enum('pending','cancel','confirm','') NOT NULL DEFAULT 'pending',
-  `account_id` varchar(255) NOT NULL
+  `account_id` varchar(255) NOT NULL,
+  `thb` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `thailand_customers`
 --
 
-INSERT INTO `thailand_customers` (`cust_id`, `customer_name`, `reff_id`, `email`, `phone`, `pax`, `package_inr`, `persion_inr`, `travel_date`, `create_date`, `status`, `account_id`) VALUES
-(85, 'manish', 'BCT892579', 'satyam@gmail.com', '9454969296', 1, 18190, 18190, '2024-04-21', '2024-04-19', 'cancel', ''),
-(86, 'manish', 'BCT266119', 'solutionkey@gmail.com', '9454969296', 2, 48000, 24000, '2024-04-27', '2024-04-19', 'cancel', ''),
-(87, 'Sydney Russell', 'BCT720272', 'qohe@mailinator.com', '22', 3, 0, 0, '1974-06-27', '2024-04-19', 'cancel', ''),
-(88, 'Jemima Collier', 'BCT225342', 'fakymeca@mailinator.com', '4', 5, 0, 0, '1999-02-13', '2024-04-19', 'cancel', 'jay@gmail.com'),
-(89, 'manish', 'BCT811781', 'manish01.bmdu@gmail.com', '9454969296', 2, 20450, 10225, '2024-04-23', '2024-04-19', 'cancel', 'manish@gmail.com'),
-(90, 'pankaj', 'BCT928409', 'pankaj@gmail.com', '9876543210', 2, 7600, 3800, '2024-10-06', '2024-04-19', 'cancel', 'manish@gmail.com'),
-(91, 'vinod', 'BCT056305', 'vinod@gmail.com', '6393805011', 2, 4550, 2275, '2024-04-27', '2024-04-19', 'cancel', 'manish@gmail.com'),
-(92, 'manish', 'BCT741191', 'solutionkey@gmail.com', '9454969296', 1, 10719, 10719, '2024-04-24', '2024-04-20', 'cancel', 'jay@gmail.com'),
-(93, 'manish', 'BCT960236', 'manish@gmail.com', '9454969296', 2, 5819, 2909.5, '2024-04-28', '2024-04-27', 'confirm', 'manish10@gmail.com'),
-(94, 'manish', 'BCT308386', 'manish01.bmdu@gmail.com', '9454969296', 1, 35969, 35969, '2024-04-30', '2024-04-27', 'confirm', 'deepak1@gmail.com');
+INSERT INTO `thailand_customers` (`cust_id`, `customer_name`, `reff_id`, `email`, `phone`, `pax`, `package_inr`, `persion_inr`, `travel_date`, `create_date`, `status`, `account_id`, `thb`) VALUES
+(105, 'manish', 'BCT449677', 'manish@gmail.com', '6393805011', 2, 16820, 8410, '2024-05-08', '2024-05-03', 'pending', 'manish@gmail.com', 6190.91);
 
 -- --------------------------------------------------------
 
@@ -296,22 +290,8 @@ CREATE TABLE `thailand_hotel` (
 --
 
 INSERT INTO `thailand_hotel` (`thailand_hotel_id`, `hotelcity_name`, `hotels`, `category_name`, `rooms`, `nights`, `ex_adults`, `refer_id`, `prices`, `reff_id`, `hotel_date`, `hotelCheckinDate`, `account_id`) VALUES
-(252, '5', '12', '2000', 1, 1, '0', '', NULL, '', '2024-04-19 15:45:07', '2024-04-21', NULL),
-(253, '1', '15', '100', 1, 1, '1', '', NULL, '', '2024-04-19 15:45:07', '2024-04-23', NULL),
-(254, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT266119', '2024-04-19 15:40:53', '2024-04-27', NULL),
-(255, '1', '1', '15000', 1, 2, '1', '', NULL, 'BCT266119', '2024-04-19 15:40:53', '2024-04-28', NULL),
-(256, '2', '20', '2000', 1, 1, '0', '', NULL, 'BCT811781', '2024-04-19 16:02:33', '2024-04-23', 'manish@gmail.com'),
-(257, '1', '1', '1500', 2, 2, '1', '', NULL, 'BCT811781', '2024-04-19 16:02:33', '2024-04-25', 'manish@gmail.com'),
-(258, '2', '20', '2000', 1, 1, '0', '', NULL, 'BCT928409', '2024-04-19 16:20:05', '2024-10-06', 'manish@gmail.com'),
-(259, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT928409', '2024-04-19 16:20:05', '2024-10-07', 'manish@gmail.com'),
-(260, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT056305', '2024-04-19 22:51:23', '2024-04-27', 'manish@gmail.com'),
-(261, '1', '15', '100', 1, 1, '1', '', NULL, 'BCT056305', '2024-04-19 22:51:23', '2024-04-28', 'manish@gmail.com'),
-(262, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT741191', '2024-04-20 15:59:04', '2024-04-24', 'jay@gmail.com'),
-(263, '2', '20', '2099', 1, 1, '0', '', NULL, 'BCT741191', '2024-04-20 15:59:04', '2024-04-25', 'jay@gmail.com'),
-(264, '1', '15', '100', 1, 2, '0', '', NULL, 'BCT960236', '2024-04-27 14:44:44', '2024-04-28', 'manish10@gmail.com'),
-(265, '2', '20', '2099', 1, 1, '0', '', NULL, 'BCT960236', '2024-04-27 14:44:44', '2024-04-30', 'manish10@gmail.com'),
-(266, '1', '1', '15000', 1, 2, '0', '', NULL, 'BCT308386', '2024-04-27 20:31:16', '2024-04-30', 'deepak1@gmail.com'),
-(267, '2', '20', '2099', 1, 1, '0', '', NULL, 'BCT308386', '2024-04-27 20:31:16', '2024-05-02', 'deepak1@gmail.com');
+(323, '1', '15', '100', 1, 1, '0', '', NULL, 'BCT449677', '2024-05-04 06:35:22', '2024-05-08', 'manish@gmail.com'),
+(324, '1', '1', '10000', 1, 1, '0', '', NULL, 'BCT449677', '2024-05-04 06:35:22', '2024-05-09', 'manish@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -350,7 +330,8 @@ INSERT INTO `thailand_payment` (`pay_id`, `user_ammount`, `description`, `file`,
 (7, 10250, 'this is description', '662c37587615d7.27139746.png', '2024-04-28', 'buy2811348', NULL, NULL, NULL, '2024-04-26 19:23:04', 'satyam@gmail.com', 'Accept', NULL, NULL),
 (8, 400, 'demo', '662c3a70acc446.63213968.png', '2024-04-25', 'buy9884109', NULL, NULL, NULL, '2024-04-26 19:36:16', 'satyam@gmail.com', 'Accept', NULL, NULL),
 (9, 500, 'GHHGGHGH', '662c3d68790824.96670451.png', '2024-04-25', 'buy5151593', NULL, NULL, NULL, '2024-04-26 19:48:56', 'satyam@gmail.com', 'Accept', NULL, NULL),
-(10, 1000, 'this payment ', '662d6110c0bec6.42761049.jpg', '2024-04-26', 'buy0183797', NULL, NULL, NULL, '2024-04-27 16:33:20', 'deepak1@gmail.com', 'Accept', NULL, NULL);
+(10, 1000, 'this payment ', '662d6110c0bec6.42761049.jpg', '2024-04-26', 'buy0183797', NULL, NULL, NULL, '2024-04-27 16:33:20', 'deepak1@gmail.com', 'Accept', NULL, NULL),
+(11, 1000, 'this is the demo', '662d8cdc9a5d84.36801720.jpg', '2024-04-27', 'buy6812322', NULL, NULL, NULL, '2024-04-27 19:40:12', 'shubham@gmail.com', 'Accept', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -375,21 +356,8 @@ CREATE TABLE `thailand_sightseeing` (
 --
 
 INSERT INTO `thailand_sightseeing` (`thailand_sight_id`, `sight_city`, `sightseeing`, `prices`, `sight_persion`, `sightCheckinDate`, `refer_id`, `account_id`, `reff_id`) VALUES
-(164, '2', '3000', '', '1', '2024-04-21', '', NULL, ''),
-(165, '1', '1520', '', '2', '2024-04-21', '', NULL, ''),
-(166, '1', '200', '', '1', '2024-04-27', '', NULL, 'BCT266119'),
-(167, '1', '200', '', '1', '2024-04-27', '', NULL, 'BCT266119'),
-(168, '1', '200', '', '1', '2024-04-23', '', 'manish@gmail.com', 'BCT811781'),
-(169, '2', '150', '', '2', '2024-04-23', '', 'manish@gmail.com', 'BCT811781'),
-(170, '1', '300', '', '4', '2024-04-23', '', 'manish@gmail.com', 'BCT811781'),
-(171, '1', '200', '', '1', '2024-10-06', '', 'manish@gmail.com', 'BCT928409'),
-(172, '2', '150', '', '2', '2024-10-08', '', 'manish@gmail.com', 'BCT928409'),
-(173, '2', '150', '', '1', '2024-04-27', '', 'manish@gmail.com', 'BCT056305'),
-(174, '2', '150', '', '1', '2024-04-28', '', 'manish@gmail.com', 'BCT056305'),
-(175, '1', '1520', '', '1', '2024-04-24', '', 'jay@gmail.com', 'BCT741191'),
-(176, '1', '1520', '', '1', '2024-04-28', '', 'manish10@gmail.com', 'BCT960236'),
-(177, '1', '1520', '', '1', '2024-04-30', '', 'deepak1@gmail.com', 'BCT308386'),
-(178, '2', '150', '', '1', '2024-05-01', '', 'deepak1@gmail.com', 'BCT308386');
+(202, '1', '1520', '', '1', '2024-05-08', '', 'manish@gmail.com', 'BCT449677'),
+(203, '2', '3000', '', '1', '2024-05-11', '', '', 'BCT449677');
 
 -- --------------------------------------------------------
 
@@ -414,20 +382,8 @@ CREATE TABLE `thailand_transport` (
 --
 
 INSERT INTO `thailand_transport` (`thailand_transport_id`, `transport`, `prices`, `transport_city`, `refer_id`, `transCheckinDate`, `account_id`, `trans_pax`, `reff_id`) VALUES
-(191, '3', '', '1', '', '', NULL, '5000', ''),
-(192, '4', '', '1', '', '', NULL, '5000', ''),
-(193, '4', '', '1', '', '2024-04-27', NULL, '5000', 'BCT266119'),
-(194, '3', '', '1', '', '2024-04-30', NULL, '5000', 'BCT266119'),
-(195, '4', '', '1', '', '2024-04-23', 'manish@gmail.com', '5000', 'BCT811781'),
-(196, '3', '', '1', '', '2024-04-25', 'manish@gmail.com', '5000', 'BCT811781'),
-(197, '4', '', '1', '', '2024-10-06', 'manish@gmail.com', '5000', 'BCT928409'),
-(198, '3', '', '1', '', '2024-04-27', 'manish@gmail.com', '2000', 'BCT056305'),
-(199, '3', '', '1', '', '2024-04-28', 'manish@gmail.com', '2000', 'BCT056305'),
-(200, '3', '', '1', '', '2024-04-24', 'jay@gmail.com', '5000', 'BCT741191'),
-(201, '3', '', '1', '', '2024-04-24', 'jay@gmail.com', '2000', 'BCT741191'),
-(202, '3', '', '1', '', '2024-04-28', 'manish10@gmail.com', '2000', 'BCT960236'),
-(203, '3', '', '1', '', '2024-04-30', 'deepak1@gmail.com', '2000', 'BCT308386'),
-(204, '5', '', '2', '', '2024-05-01', 'deepak1@gmail.com', '200', 'BCT308386');
+(228, '3', '', '1', '', '2024-05-08', 'manish@gmail.com', '2000', 'BCT449677'),
+(229, '5', '', '2', '', '2024-05-09', '', '200', 'BCT449677');
 
 -- --------------------------------------------------------
 
@@ -503,7 +459,11 @@ INSERT INTO `transactions` (`id`, `wallet_id`, `type`, `amount`, `message`, `rem
 (18, 5, 'debit', 200.00, 'dibit', 12700.00, '2024-04-27 19:27:24', 'success', '0'),
 (19, 8, 'credit', 1000.00, NULL, 1000.00, '2024-04-27 20:38:08', 'success', 'buy0183797'),
 (20, 8, 'reward', 50.00, 'this is reward', 1050.00, '2024-04-27 20:40:38', 'success', '0'),
-(21, 8, 'debit', 300.00, 'this payment Debit', 750.00, '2024-04-27 20:41:19', 'success', '0');
+(21, 8, 'debit', 300.00, 'this payment Debit', 750.00, '2024-04-27 20:41:19', 'success', '0'),
+(22, 8, 'reward', 50.00, 'reward', 800.00, '2024-04-27 23:31:01', 'success', '0'),
+(23, 9, 'credit', 1000.00, NULL, 1000.00, '2024-04-27 23:41:01', 'success', 'buy6812322'),
+(24, 9, 'reward', 100.00, 'reward', 1100.00, '2024-04-27 23:42:41', 'success', '0'),
+(25, 9, 'debit', 300.00, 'payment debit', 800.00, '2024-04-27 23:43:31', 'success', '0');
 
 -- --------------------------------------------------------
 
@@ -514,7 +474,6 @@ INSERT INTO `transactions` (`id`, `wallet_id`, `type`, `amount`, `message`, `rem
 CREATE TABLE `transport` (
   `trans_id` int(11) NOT NULL,
   `transport_name` varchar(150) NOT NULL,
-  `prices` double NOT NULL,
   `tcity_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -522,12 +481,13 @@ CREATE TABLE `transport` (
 -- Dumping data for table `transport`
 --
 
-INSERT INTO `transport` (`trans_id`, `transport_name`, `prices`, `tcity_id`) VALUES
-(1, '01 Way Taxi From Phuket to Krabi Hotel', 2000, 1),
-(3, '01 Way Taxi From Phuket Airport to Krabi Hotel', 2000, 1),
-(4, '01Why Taxi From Phuket Airport to Kharabi Hotel', 1500, 1),
-(5, 'Lucknow to Airport', 150, 2),
-(6, 'Airport to Lucknow ', 200, 2);
+INSERT INTO `transport` (`trans_id`, `transport_name`, `tcity_id`) VALUES
+(1, '01 Way Taxi From Phuket to Krabi Hotel', 1),
+(3, '01 Way Taxi From Phuket Airport to Krabi Hotel', 1),
+(4, '01Why Taxi From Phuket Airport to Kharabi Hotel', 1),
+(5, 'Lucknow to Airport', 2),
+(6, 'Airport to Lucknow 2', 2),
+(7, 'Lucknow to Airport', 1);
 
 -- --------------------------------------------------------
 
@@ -548,11 +508,12 @@ CREATE TABLE `transport_category` (
 
 INSERT INTO `transport_category` (`tranport_cat_id`, `transport_category`, `prices`, `transref_id`) VALUES
 (2, '1-8PAX', 5000, 3),
-(3, '1-10 Pax', 5000, 3),
+(3, '1-10 Pax', 4999, 3),
 (4, '1-3PAX', 2000, 3),
-(5, '1-3PAX', 200, 5),
+(5, '1-5PAX', 149, 3),
 (6, '1-8PAX', 400, 5),
-(7, '1-10 Pax', 500, 5);
+(7, '1-10 Pax', 500, 5),
+(9, '1-3PAX', 150, 5);
 
 -- --------------------------------------------------------
 
@@ -583,7 +544,8 @@ INSERT INTO `users` (`id`, `name`, `gender`, `phone`, `email`, `password`, `crea
 (24, 'Manish Kumar', 'male', '9454969280', 'manish10@gmail.com', '123456', '2024-04-24 22:55:54', '', 'active', 'good user'),
 (25, 'Manish', 'male', '9616893299', 'manish@gmail.com', '123456', '2024-04-27 16:09:02', '', 'active', NULL),
 (26, 'deepak', 'male', '9876543219', 'deepak@gmail.com', '123456', '2024-04-27 16:19:14', '', 'pending', NULL),
-(29, 'subham', 'male', '9876543218', 'deepak1@gmail.com', '123456', '2024-04-27 16:27:33', '', 'active', NULL);
+(29, 'subham', 'male', '9876543218', 'deepak1@gmail.com', '123456', '2024-04-27 16:27:33', '', 'active', NULL),
+(30, 'shubham', 'male', '9876543250', 'shubham@gmail.com', '123456', '2024-04-27 19:35:01', '', 'active', 'hello you very bad');
 
 -- --------------------------------------------------------
 
@@ -608,7 +570,8 @@ INSERT INTO `wallets` (`id_wallet`, `user_id`, `contact`, `wallet_balance`, `cre
 (5, 'satyam@gmail.com', '9454969296', 12300.00, '2024-04-25 02:48:51', '2024-04-27 19:27:24'),
 (6, 'sivam@gmail.com', '9876543214', 0.00, '2024-04-25 02:53:03', '2024-04-26 20:26:09'),
 (7, 'manish10@gmail.com', '9454969280', 100.00, '2024-04-25 02:55:54', '2024-04-26 17:18:54'),
-(8, 'deepak1@gmail.com', '9876543218', 750.00, '2024-04-27 20:27:33', '2024-04-27 20:41:19');
+(8, 'deepak1@gmail.com', '9876543218', 800.00, '2024-04-27 20:27:33', '2024-04-27 23:31:01'),
+(9, 'shubham@gmail.com', '9876543250', 800.00, '2024-04-27 23:35:01', '2024-04-27 23:43:31');
 
 --
 -- Indexes for dumped tables
@@ -648,7 +611,8 @@ ALTER TABLE `hotels`
 -- Indexes for table `hotel_categories`
 --
 ALTER TABLE `hotel_categories`
-  ADD PRIMARY KEY (`hcategory_id`);
+  ADD PRIMARY KEY (`hcategory_id`),
+  ADD UNIQUE KEY `prices` (`prices`);
 
 --
 -- Indexes for table `logo`
@@ -666,7 +630,8 @@ ALTER TABLE `manage_offer`
 -- Indexes for table `sightseeing`
 --
 ALTER TABLE `sightseeing`
-  ADD PRIMARY KEY (`sight_id`);
+  ADD PRIMARY KEY (`sight_id`),
+  ADD UNIQUE KEY `prices` (`prices`);
 
 --
 -- Indexes for table `thailand_customers`
@@ -723,7 +688,8 @@ ALTER TABLE `transport`
 -- Indexes for table `transport_category`
 --
 ALTER TABLE `transport_category`
-  ADD PRIMARY KEY (`tranport_cat_id`);
+  ADD PRIMARY KEY (`tranport_cat_id`),
+  ADD UNIQUE KEY `prices` (`prices`);
 
 --
 -- Indexes for table `users`
@@ -779,7 +745,7 @@ ALTER TABLE `hotels`
 -- AUTO_INCREMENT for table `hotel_categories`
 --
 ALTER TABLE `hotel_categories`
-  MODIFY `hcategory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `hcategory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `logo`
@@ -797,37 +763,37 @@ ALTER TABLE `manage_offer`
 -- AUTO_INCREMENT for table `sightseeing`
 --
 ALTER TABLE `sightseeing`
-  MODIFY `sight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `sight_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `thailand_customers`
 --
 ALTER TABLE `thailand_customers`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `thailand_hotel`
 --
 ALTER TABLE `thailand_hotel`
-  MODIFY `thailand_hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+  MODIFY `thailand_hotel_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
 
 --
 -- AUTO_INCREMENT for table `thailand_payment`
 --
 ALTER TABLE `thailand_payment`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `thailand_sightseeing`
 --
 ALTER TABLE `thailand_sightseeing`
-  MODIFY `thailand_sight_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `thailand_sight_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=204;
 
 --
 -- AUTO_INCREMENT for table `thailand_transport`
 --
 ALTER TABLE `thailand_transport`
-  MODIFY `thailand_transport_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `thailand_transport_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=230;
 
 --
 -- AUTO_INCREMENT for table `thailand_upload`
@@ -839,31 +805,31 @@ ALTER TABLE `thailand_upload`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `transport`
 --
 ALTER TABLE `transport`
-  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `transport_category`
 --
 ALTER TABLE `transport_category`
-  MODIFY `tranport_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `tranport_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `wallets`
 --
 ALTER TABLE `wallets`
-  MODIFY `id_wallet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_wallet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

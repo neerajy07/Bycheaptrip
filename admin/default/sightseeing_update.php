@@ -1,5 +1,5 @@
 <?php
-include ".../../connection.php";
+include "../../connection.php";
 session_start();
 if (!isset($_SESSION["userid"])) {
     header("Location:../index");
@@ -35,20 +35,30 @@ function sanitize_input($conn, $data)
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    $sight_id = $_POST['sight_id'];
-    $sight_name = sanitize_input($conn, $_POST['sight_name']);
+$sight_id = $_POST['sight_id'];
+$sight_name = sanitize_input($conn, $_POST['sight_name']);
+$tsight_id = sanitize_input($conn, $_POST['tsight_id']);
+$prices = sanitize_input($conn, $_POST['prices']);
 
-    $tsight_id = sanitize_input($conn, $_POST['tsight_id']);
+// Check if prices are unique
+$check_query = "SELECT * FROM sightseeing WHERE prices = '$prices' AND sight_id != $sight_id";
+$result = mysqli_query($conn, $check_query);
+if (mysqli_num_rows($result) > 0) {
+    echo "<script>alert('Prices must be unique. Please enter a different price.');
+    window.location.href = 'sightseeing_update?sight_id=$sight_id';
+    </script>";
+    exit(); // Exit script if prices are not unique
+}
 
-    $prices = sanitize_input($conn, $_POST['prices']);
-    $update_query = "UPDATE sightseeing SET sight_name = '$sight_name',prices = '$prices', tsight_id = '$tsight_id' WHERE sight_id = $sight_id";
-    if (mysqli_query($conn, $update_query)) {
-        echo "<script>alert(' updated successfully.');
-        window.location.href = 'sightseeing_all';
-        </script>";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+$update_query = "UPDATE sightseeing SET sight_name = '$sight_name', prices = '$prices', tsight_id = '$tsight_id' WHERE sight_id = $sight_id";
+
+if (mysqli_query($conn, $update_query)) {
+    echo "<script>alert('Updated successfully.');
+    window.location.href = 'sightseeing_all';
+    </script>";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
 } elseif (isset($_GET['sight_id'])) {
     $sight_id = $_GET['sight_id'];
     // Retrieve trans details from the database

@@ -58,7 +58,7 @@ if (($_SESSION["usersID"] == "")) {
                             </thead>
                             <tbody>
                                 <?php
-                                $query = "SELECT * FROM `thailand_customers`where account_id='$_SESSION[userEmail]'";
+                                $query = "SELECT * FROM `thailand_customers`where account_id='$_SESSION[userEmail]' ORDER BY create_date DESC";
                                 $res = mysqli_query($conn, $query);
                                 $a = 1;
                                 while ($row = mysqli_fetch_assoc($res)) {
@@ -72,7 +72,8 @@ if (($_SESSION["usersID"] == "")) {
                                         <td><?php echo $row['pax'] ?></td>
                                         <td><?php echo $row['package_inr'] ?></td>
                                         <td><?php echo $row['travel_date'] ?></td>
-                                        <td><a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary">show</a></td>
+                                        <td><a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary">show</a>
+                                        <a href="thailand_form_edit?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary">Edit</a></td>
 
                                     </tr>
                                 <?php
