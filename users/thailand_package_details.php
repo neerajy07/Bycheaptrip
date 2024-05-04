@@ -157,14 +157,7 @@ if (mysqli_num_rows($result) > 0) {
 
 *Total Package cost <?php echo $row['package_inr'] ?>/- inr Excluding GST*
 
-<?php 
- }
-} else {
-    echo "No results";
-}
-}
 
-?>
  </textarea>
                                             </div>
                                         </div>
@@ -180,7 +173,7 @@ if (mysqli_num_rows($result) > 0) {
                                                         </td>
                                                         <td style="padding: 15px;">
                                           
-                       <a href="calculator_b2b.php?elid=1&edid=36940" class="btn btn-primary">
+                       <a href="thailand_form_edit?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary">
                       Edit Information
                       </a>
                   </td>
@@ -207,6 +200,14 @@ if (mysqli_num_rows($result) > 0) {
             </div>
         </div>
     </section>
+    <?php 
+ }
+} else {
+    echo "No results";
+}
+}
+
+?>
 
 </main><!-- End #main -->
 <?php include('footer.php'); ?>
