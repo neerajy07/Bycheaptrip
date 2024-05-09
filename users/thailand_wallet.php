@@ -5,6 +5,17 @@ if (($_SESSION["usersID"] == "")) {
     header("Location:../index");
 }
 ?>
+<style>
+    .datatable-input {
+        box-shadow:5px 6px 5px;
+        border:2px solid black;
+        border-radius:10px;
+    }
+    main .datatable tbody tr:last-child td{
+        border:none;
+    }
+    
+</style>
 <?php include('header.php'); ?>
 <?php include('sidebar.php'); ?>
 <main id="main" class="main">
@@ -21,7 +32,7 @@ if (($_SESSION["usersID"] == "")) {
                 }
                 ?>
                 <div class="card">
-                    <div class="card-header"><a href="thailand_payment_form" class="btn btn-primary float-end"><i class="bi bi-plus-circle"></i> Add Payment</a></div>
+                    <div class="card-header"><a href="thailand_payment_form" class="btn btn-primary float-end" style="color:orange;background:black; border:none"><i class="bi bi-plus-circle"></i> Add Payment</a></div>
                     <div class="card-body">
                         <h5 class="card-title">Payment History</h5>
                         <!-- Table with stripped rows -->

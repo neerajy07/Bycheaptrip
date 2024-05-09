@@ -6,6 +6,7 @@ if (($_SESSION["usersID"] == "")) {
 }
 ?>
 <style>
+    
     .d-flex {
         display: flex;
         flex-wrap: wrap;
@@ -19,19 +20,67 @@ if (($_SESSION["usersID"] == "")) {
     .hidden {
         display: none !important;
     }
+    th{
+        color:#000;
+        font-family:"poppins"
+    }
+    .pagetitle h1{
+        color:black;
+        font-family:"poppins";
+    }
+    .card-body h5{  
+        color:black;
+    }
+    main .breadcrumb{
+        font-family:"poppins";
+    }
+    main h1{
+        font-family:"poppins";
+        color:#000; margin-top:50px;
+        font-weight:700; 
+        font-size:22px;
+    }
+    main select{
+        font-family:"poppins";
+    }
+    .center {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+    .center button:hover{
+        color:orange;
+    }
+    main table .int{
+        border:1px solid grey;
+        margin-left:-25%;
+    }
+    main .d-flex{
+        justify-content:start;
+    } 
+    @media screen and (max-width:768px) {
+        
+        main .data-int input{
+            margin-left:20px;
+            padding-right:-10%;
+        }
+        main table .int{
+            margin-left:4%;
+        }
+       
+    }
 </style>
 
 <?php include 'header.php'; ?>
 <?php include 'sidebar.php'; ?>
 <main id="main" class="main">
-
     <div class="pagetitle">
-        <h1>Thailand Package Form </h1>
+        <h1 style="color:black">Thailand Package Form </h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                 <li class="breadcrumb-item">Forms</li>
-                <li class="breadcrumb-item active">Layouts</li>
+                <li class="breadcrumb-item active" style="color:black">Layouts</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -77,21 +126,22 @@ if (($_SESSION["usersID"] == "")) {
                                     <option value="13">13</option>
                                     <option value="14">14</option>
                                     <option value="15">15</option>
+                                    <option value="15">16</option>
                                 </select>
                                 <span id="personsError" style="color: red;"></span>
                             </div>
                             <br>
                             <br>
-                            <h1 class="text-center text-info">THAILAND</h1>
-                            <div class="main bg-info">
-                                <div id="formContainer1" class="d-flex justify-content-center">
-                                    <div class="form-rows-container d-flex">
+                            <h1 class="text" style="">Details Here</h1>
+                            <div class="main" style="margin-top:10px">
+                                <div id="formContainer1" class="d-flex justify-content-start">
+                                    <div class="form-rows-container-fluid mx-1 d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city1" data-id="1">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -108,20 +158,20 @@ if (($_SESSION["usersID"] == "")) {
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                        <div class="form-row mx-2">
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel1" data-id="1">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category1" data-id="1">
                                                 <option value="" selected>Select Category</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room1">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -136,7 +186,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night1">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -151,7 +201,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult1">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -161,7 +211,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate1">
                                         </div>
                                     </div>
@@ -173,7 +223,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city2" data-id="2">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -191,19 +241,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel2" data-id="2">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category2" data-id="2">
                                                 <option value="" selected>Select Category</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room2">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -218,7 +268,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night2">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -233,7 +283,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult2">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -243,7 +293,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate2">
                                         </div>
                                     </div>
@@ -255,7 +305,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city3" data-id="3">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -273,19 +323,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel3" data-id="3">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category3" data-id="3">
                                                 <option value="" selected>Select Category</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room3">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -300,7 +350,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night3">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -315,7 +365,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult3">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -325,7 +375,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate3">
                                         </div>
                                     </div>
@@ -337,7 +387,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city4" data-id="4">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -355,19 +405,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel4" data-id="4">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category4" data-id="4">
                                                 <option value="" selected>Select Category</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room4">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -382,7 +432,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night4">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -397,7 +447,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult4">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -407,7 +457,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate4">
                                         </div>
                                     </div>
@@ -419,7 +469,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control  city" name="hotelcity_name[]" id="city5" data-id="5">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -437,19 +487,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel5" data-id="5">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category5" data-id="5">
                                                 <option value="" selected>Select Category</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room5">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -464,7 +514,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night5">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -479,7 +529,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult5">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -489,19 +539,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate5">
                                         </div>
                                     </div>
                                 </div>
-                                <div id="formContainer6" class="justify-content-center" style="display: none !important;">
+                                <div id="formContainer6" class="justify-content-start" style="display: none !important;">
                                     <div class="form-rows-container d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control  city" name="hotelcity_name[]" id="city6" data-id="6">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -519,19 +569,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel6" data-id="6">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category6" data-id="6">
                                                 <option value="" selected>Select Category</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room6">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -546,7 +596,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night6">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -561,7 +611,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult6">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -571,19 +621,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate6">
                                         </div>
                                     </div>
                                 </div>
-                                <div id="formContainer7" class="justify-content-center" style="display: none !important;">
+                                <div id="formContainer7" class="justify-content-start" style="display: none !important;">
                                     <div class="form-rows-container d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control  city" name="hotelcity_name[]" id="city7" data-id="7">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -643,7 +693,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult7">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -653,7 +703,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate7">
                                         </div>
                                     </div>
@@ -683,13 +733,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel8" data-id="8">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category8" data-id="8">
                                                 <option value="" selected>Select Category</option>
                                             </select>
@@ -1157,7 +1207,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control  city" name="hotelcity_name[]" id="city14" data-id="14">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -1175,19 +1225,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel14" data-id="14">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category14" data-id="14">
                                                 <option value="" selected>Select Category</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room14">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -1202,7 +1252,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night14">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -1217,7 +1267,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult14">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -1227,7 +1277,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate14">
                                         </div>
                                     </div>
@@ -1257,7 +1307,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel15" data-id="15">
                                                 <option value="" selected>Select Hotel</option>
                                             </select>
@@ -1316,17 +1366,17 @@ if (($_SESSION["usersID"] == "")) {
                                 </div>
 
                                 <!-- <button type="button" id="addButton" class="btn btn-primary">Add</button> -->
-                                <button type="button" id="addButtonmain" class="btn btn-primary">Add</button>
-                                <button type="button" id="removeButton" class="btn btn-danger" style="display:none;">Remove</button>
+                                <button type="button" id="addButtonmain" class="btn btn-primary" style="background:#000; border:solid black;color:orange">Add</button>
+                                <button type="button" id="removeButton" class="btn btn-danger" style="display:none; background:orange;border:solid orange">Remove</button>
                                 <!-- city transport -->
-                                <div id="cityformContainer1" class="d-flex justify-content-center">
+                                <div id="cityformContainer1" class="d-flex justify-content-start">
                                     <div class="form-rows-container-1 d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity1" data-id="1">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -1344,19 +1394,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport transport" name="transport[]" id="transport1" data-id="1">
                                                 <option value="" selected>Select Transport</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory1" data-id="1">
                                                 <option value="" selected>Select Persion</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate">
                                         </div>
 
@@ -1369,7 +1419,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity2" data-id="2">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -1387,19 +1437,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport transport" name="transport[]" id="transport2" data-id="2">
                                                 <option value="" selected>Select Transport</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory2" data-id="2">
                                                 <option value="" selected>Select Persion</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate">
                                         </div>
 
@@ -1412,7 +1462,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity3" data-id="3">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -1430,19 +1480,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport transport" name="transport[]" id="transport3" data-id="3">
                                                 <option value="" selected>Select Transport</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory3" data-id="3">
                                                 <option value="" selected>Select Persion</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate">
                                         </div>
 
@@ -1541,7 +1591,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity6" data-id="6">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -1559,19 +1609,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport" name="transport[]" id="transport6" data-id="6">
                                                 <option value="" selected>Select Transport</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory6" data-id="6">
                                                 <option value="" selected>Select Persion</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate">
                                         </div>
 
@@ -1774,19 +1824,19 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport" name="transport[]" id="transport11" data-id="11">
                                                 <option value="" selected>Select Transport</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory11" data-id="11">
                                                 <option value="" selected>Select Persion</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate">
                                         </div>
 
@@ -1945,12 +1995,12 @@ if (($_SESSION["usersID"] == "")) {
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-row mx-1">
+                                         <div class="form-row mx-1">
                                             <label for="hotel">Transport:</label>
                                             <select class="form-control transport" name="transport[]" id="transport15" data-id="15">
                                                 <option value="" selected>Select Transport</option>
                                             </select>
-                                        </div>
+                                         </div>
                                         <div class="form-row mx-1">
                                             <label for="rooms">No of Persion:</label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory15" data-id="15">
@@ -1961,21 +2011,21 @@ if (($_SESSION["usersID"] == "")) {
                                             <label for="checkinDate">Check-in Date:</label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate">
                                         </div>
-
+                                       
                                     </div>
                                 </div>
-                                <button type="button" id="transportaddButton" class="btn btn-primary">Add</button>
-                                <button type="button" id="transportremoveButton" class="btn btn-danger" style="display:none;">Remove</button>
+                                    <button type="button" id="transportaddButton" class="btn btn-primary" style="background:#000; border:solid black; color:orange">Add</button>
+                                    <button type="button" id="transportremoveButton" class="btn btn-danger" style="display:none;background:orange; border:solid orange">Remove</button>
 
                                 <!-- end transport -->
-                                <div id="SightformContainer1" class="d-flex justify-content-center">
+                                <div id="SightformContainer1" class="d-flex justify-content-start">
                                     <div class="form-rows-container-2 d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity1" data-id="1">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -1993,13 +2043,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing1" data-id="1">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion1">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2014,7 +2064,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2026,7 +2076,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity2" data-id="2">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2044,13 +2094,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing2" data-id="2">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion2">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2065,7 +2115,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2077,7 +2127,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity[]" data-id="3">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2095,13 +2145,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing3" data-id="3">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion3">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2116,7 +2166,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2128,7 +2178,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity4" data-id="4">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2146,13 +2196,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing4" data-id="4">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion4">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2167,7 +2217,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2179,7 +2229,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity5" data-id="5">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2197,13 +2247,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing5" data-id="5">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion5">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2218,7 +2268,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2230,7 +2280,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity6" data-id="6">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2248,13 +2298,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing6" data-id="6">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion6">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2269,7 +2319,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2299,13 +2349,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing7" data-id="7">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion7">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2320,7 +2370,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2350,13 +2400,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing8" data-id="8">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion8">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2371,7 +2421,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2401,13 +2451,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing9" data-id="9">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion9">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2422,7 +2472,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2434,7 +2484,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity10" data-id="10">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2587,7 +2637,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity13" data-id="13">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2605,13 +2655,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing13" data-id="13">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion13">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2626,7 +2676,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2638,7 +2688,7 @@ if (($_SESSION["usersID"] == "")) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity14" data-id="14">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2656,13 +2706,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing14" data-id="14">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion14">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2677,7 +2727,7 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
@@ -2707,13 +2757,13 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing15" data-id="15">
                                                 <option value="" selected>Select Sightseeing</option>
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion15">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -2728,17 +2778,16 @@ if (($_SESSION["usersID"] == "")) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate">
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" id="SightaddButton" class="btn btn-primary">Add</button>
-                                <button type="button" id="SightremoveButton" class="btn btn-danger" style="display:none;">Remove</button>
+                                <button type="button" id="SightaddButton" class="btn btn-primary"  style="background:#000; border:solid black;color:orange" >Add</button>
+                                <button type="button" id="SightremoveButton" class="btn btn-danger" style="display:none; backgound:orange;">Remove</button>
                             </div>
-                            <button type="button" class="btn btn-sm btn-block btn-primary" id="fetchDataButton">Calculate</button>
                             <table>
-                                <tr class="">
+                                <tr class="data-int">
                                     <th>Remarks:</th>
 
 
@@ -2746,27 +2795,32 @@ if (($_SESSION["usersID"] == "")) {
                                 </tr>
                                 <tr>
                                     <th>Total THB:</th>
-                                    <td><input type="text" name="thb" id="totalthb" readonly />
+                                    <td><input type="text" name="thb" class="int" id="totalthb" readonly />
                     </div>
                     </td>
                     </tr>
                     <tr>
                         <th>THB TO INR Rate:</th>
-                        <td><input type="text" name="thbtoinr" id="thbtoinr" value="2.2" readonly /></td>
+                        <td><input type="text" name="thbtoinr" class="int" id="thbtoinr" value="2.2" readonly /></td>
                     </tr>
                     <tr>
                         <th>Srvice per person INR Rate:</th>
-                        <td><input type="text" name="persion_inr" id="inrperpersion" readonly /></td>
+                        <td><input type="text" name="persion_inr" class="int" id="inrperpersion" readonly /></td>
                     </tr>
                     <tr>
                         <th>Total INR:</th>
-                        <td><input type="text" name="package_inr" id="totalSumDisplay1" readonly /></td>
+                        <td><input type="text" name="package_inr" class="int" id="totalSumDisplay1" readonly /></td>
                     </tr>
                     </table>
 
-                    <div class="text-center">
-                        <button type="submit" id="finalSubmit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    <div class="center">
+                    <button type="button" class="btn btn-sm btn-block btn-primary" id="fetchDataButton" style="background:#000;border:solid black;font-family:poppins;width:22% ">Calculate</button>
+
+                    </div>
+
+                    <div class="text">
+                        <button type="submit" id="finalSubmit" class="btn btn-primary" style="background:#000;border: solid black">Submit</button>
+                        <button type="reset" class="btn btn-secondary"style="background:#FF6500;border:2px solid #ff65000">Reset</button>
                     </div>
                     </form>
 

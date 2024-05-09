@@ -5,7 +5,6 @@ if (($_SESSION["usersID"] == "")) {
     header("Location:../index");
 }
 ?>
-
 <?php
 $_SESSION["id"] = "1";
 
@@ -18,10 +17,8 @@ if (count($_POST) > 0) {
     } else
         $message = "Current Password is not correct";
 }
+
 ?>
-
-
-
 <?php include('header.php'); ?>
 <?php include('sidebar.php'); ?>
 
@@ -134,7 +131,7 @@ if (count($_POST) > 0) {
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Change Password</button>
+                                        <button type="submit" class="btn btn-primary" style="background:black;color:orange;border:none">Change Password</button>
                                     </div>
                                 </form>
 

@@ -1,3 +1,166 @@
+
+
+<style>
+    .sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  z-index: 996;
+  transition: all 0.3s;
+  padding: 20px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color:#000 transparent;
+  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
+  background-color:white;
+}
+@media (max-width: 1199px) {
+  .sidebar {
+    left: -300px;
+  }
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+  height: 8px;
+  background-color:white;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color:white;
+}
+
+@media (min-width: 1200px) {
+
+  #main,
+  #footer {
+    margin-left: 300px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .toggle-sidebar .sidebar {
+    left: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .toggle-sidebar #main,
+  .toggle-sidebar #footer {
+    margin-left: 0;
+  }
+
+  .toggle-sidebar .sidebar {
+    left: -300px;
+  }
+}
+
+.sidebar-nav {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav .nav-item {
+  margin-bottom: 5px;
+}
+
+.sidebar-nav .nav-heading {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 600;
+  margin: 10px 0 5px 15px;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+  transition: 0.3;
+  background: #f6f9ff;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.sidebar-nav .nav-link i {
+  font-size: 16px;
+  margin-right: 10px;
+  color: #000;
+}
+
+.sidebar-nav .nav-link.collapsed {
+  color: #000 ;
+  background: #fff;
+}
+
+.sidebar-nav .nav-link.collapsed i {
+  color: #899bbd;
+}
+
+.sidebar-nav .nav-link:hover {
+  color: #000;
+  background: #f6f9ff;
+}
+
+.sidebar-nav .nav-link:hover i {
+  color:#000;
+}
+
+.sidebar-nav .nav-link .bi-chevron-down {
+  margin-right: 0;
+  transition: transform 0.2s ease-in-out;
+}
+
+.sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+.sidebar-nav .nav-content {
+  padding: 5px 0 0 0;
+  margin: 0;
+  list-style: none;
+}
+
+.sidebar-nav .nav-content a {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  transition: 0.3;
+  padding: 10px 0 10px 40px;
+  transition: 0.3s;
+}
+
+.sidebar-nav .nav-content a i {
+  font-size: 6px;
+  margin-right: 8px;
+  line-height: 0;
+  border-radius: 50%;
+}
+
+.sidebar-nav .nav-content a:hover,
+.sidebar-nav .nav-content a.active {
+  color:#000;
+}
+
+.sidebar-nav .nav-content a.active i {
+  background-color: #000;
+}
+
+</style>
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
 
@@ -5,8 +168,8 @@
 
         <li class="nav-item">
             <a class="nav-link " href="dashboard">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
+                <i class="bi bi-grid" style="color:orange"></i>
+                <span style="font-family:poppins">Dashboard</span>
             </a>
         </li><!-- End Dashboard Nav -->
 
@@ -159,17 +322,17 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-gem"></i><span>Thailand Tour</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-gem"style="color:orange"></i><span style="color:black;font-family:poppins">Thailand Tour</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="thailand_form">
-                        <i class="bi bi-circle"></i><span>Add Tour</span>
+                        <i class="bi bi-circle"style="color:orange"></i><span style="color:black;font-family:poppins">Add Tour</span>
                     </a>
                 </li>
                 <li>
                     <a href="thailand_package">
-                        <i class="bi bi-circle"></i><span>Thailand Package</span>
+                        <i class="bi bi-circle"style="color:orange"></i><span style="color:black;font-family:poppins">Thailand Package</span>
                     </a>
                 </li>
                 <li>
@@ -190,26 +353,26 @@
         </li> -->
         
         <li class="nav-item">
-            <a class="nav-link collapsed" href="thailand_payment">
-                <i class="bi bi-envelope"></i>
-                <span>Payments</span>
+            <a class="nav-link collapsed" href="thailand_payment" style="color:black;font-family:poppins">
+                <i class="bi bi-envelope"style="color:orange"></i>
+                <span >Payments</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="thailand_wallet">
-            <i class="bi bi-question-circle"></i>
+            <a class="nav-link collapsed" href="thailand_wallet" style="color:black;font-family:poppins">
+            <i class="bi bi-question-circle"style="color:orange"></i>
                 <span>Wallet</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="reward">
-                <i class="bi bi-card-list"></i>
+            <a class="nav-link collapsed" href="reward" style="color:black;font-family:poppins">
+                <i class="bi bi-card-list" style="color:orange"></i>
                 <span>Reward</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link collapsed" href="final_cust">
-                <i class="bi bi-box-arrow-in-right"></i>
+            <a class="nav-link collapsed" href="final_cust" style="color:black; font-family:poppins">
+                <i class="bi bi-box-arrow-in-right"style="color:orange"></i>
                 <span>Final Customer</span>
             </a>
         </li>

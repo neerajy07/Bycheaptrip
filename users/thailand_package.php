@@ -14,6 +14,15 @@ if (($_SESSION["usersID"] == "")) {
     .form-row {
         margin: 5px;
     }
+    main .pagetitle h1{
+        font-family:"poppins"
+    }
+    main .breadcrumb{
+        font-family:"poppins";
+    } 
+    main .section h5{
+        font-family:"poppins";
+    }
 </style>
 
 <?php include('header.php'); ?>

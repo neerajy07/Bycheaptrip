@@ -5,6 +5,18 @@ if (($_SESSION["usersID"] == "")) {
     header("Location:../index");
 }
 ?>
+<style>
+     .datatable-input {
+        box-shadow:5px 6px 5px;
+        border:2px solid black;
+        border-radius:10px;
+    }
+    main .datatable tbody tr:last-child td{
+        border:none;
+    }
+
+    
+</style>
 <?php include('header.php'); ?>
 <?php include('sidebar.php'); ?>
 <main id="main" class="main">

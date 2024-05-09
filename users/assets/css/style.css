@@ -9,23 +9,25 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-  background: #f6f9ff;
+  font-family: "poppins", sans-serif;
+  background:black;
   color: #444444;
+  background:url("/users/assets/img/pexels-photo-13869436.jpeg");
 }
 
 a {
-  color: #4154f1;
+  color:black;
   text-decoration: none;
 }
 
 a:hover {
-  color: #717ff5;
+  color:black;
   text-decoration: none;
 }
 
@@ -35,7 +37,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Nunito", sans-serif;
+  font-family: "poppins", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -64,7 +66,7 @@ h6 {
   font-size: 24px;
   margin-bottom: 0;
   font-weight: 600;
-  color: #012970;
+  color:black;
 }
 
 /*--------------------------------------------------------------
@@ -77,7 +79,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 99999;
-  background: #4154f1;
+  background: black;
   width: 40px;
   height: 40px;
   border-radius: 4px;
@@ -88,10 +90,11 @@ h6 {
   font-size: 24px;
   color: #fff;
   line-height: 0;
+
 }
 
 .back-to-top:hover {
-  background: #6776f4;
+  background: #000;
   color: #fff;
 }
 
@@ -182,22 +185,22 @@ h6 {
 
 /* Light Backgrounds */
 .bg-primary-light {
-  background-color: #cfe2ff;
+  background-color:black;
   border-color: #cfe2ff;
 }
 
 .bg-secondary-light {
-  background-color: #e2e3e5;
+  background-color: #000;
   border-color: #e2e3e5;
 }
 
 .bg-success-light {
-  background-color: #d1e7dd;
+  background-color: #000;
   border-color: #d1e7dd;
 }
 
 .bg-danger-light {
-  background-color: #f8d7da;
+  background-color: #000;
   border-color: #f8d7da;
 }
 
@@ -207,12 +210,12 @@ h6 {
 }
 
 .bg-info-light {
-  background-color: #cff4fc;
+  background-color: #000;
   border-color: #cff4fc;
 }
 
 .bg-dark-light {
-  background-color: #d3d3d4;
+  background-color: #000;
   border-color: #d3d3d4;
 }
 
@@ -222,26 +225,27 @@ h6 {
   border: none;
   border-radius: 5px;
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  font-family:"poppins";
 }
 
 .card-header,
 .card-footer {
-  border-color: #ebeef4;
+  border-color:solid black;
   background-color: #fff;
-  color: #798eb3;
-  padding: 15px;
+  color:#000;
+  padding: 15px;  
 }
 
 .card-title {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
-  color: #012970;
+  color: #000;
   font-family: "Poppins", sans-serif;
 }
 
 .card-title span {
-  color: #899bbd;
+  color:black;
   font-size: 14px;
   font-weight: 400;
 }
@@ -608,9 +612,9 @@ h6 {
   padding: 20px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: #aab7cf transparent;
+  scrollbar-color:#000 transparent;
   box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background-color:white;
 }
 
 @media (max-width: 1199px) {
@@ -622,11 +626,11 @@ h6 {
 .sidebar::-webkit-scrollbar {
   width: 5px;
   height: 8px;
-  background-color: #fff;
+  background-color:white;
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background-color: #aab7cf;
+  background-color:white;
 }
 
 @media (min-width: 1200px) {
@@ -674,7 +678,7 @@ h6 {
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
-  color: #899bbd;
+  color: #000;
   font-weight: 600;
   margin: 10px 0 5px 15px;
 }
@@ -684,7 +688,7 @@ h6 {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #4154f1;
+  color: #000;
   transition: 0.3;
   background: #f6f9ff;
   padding: 10px 15px;
@@ -694,11 +698,11 @@ h6 {
 .sidebar-nav .nav-link i {
   font-size: 16px;
   margin-right: 10px;
-  color: #4154f1;
+  color: #000;
 }
 
 .sidebar-nav .nav-link.collapsed {
-  color: #012970;
+  color: #000 ;
   background: #fff;
 }
 
@@ -707,12 +711,12 @@ h6 {
 }
 
 .sidebar-nav .nav-link:hover {
-  color: #4154f1;
+  color: #000;
   background: #f6f9ff;
 }
 
 .sidebar-nav .nav-link:hover i {
-  color: #4154f1;
+  color:#000;
 }
 
 .sidebar-nav .nav-link .bi-chevron-down {
@@ -735,7 +739,7 @@ h6 {
   align-items: center;
   font-size: 14px;
   font-weight: 600;
-  color: #012970;
+  color: #000;
   transition: 0.3;
   padding: 10px 0 10px 40px;
   transition: 0.3s;
@@ -750,11 +754,11 @@ h6 {
 
 .sidebar-nav .nav-content a:hover,
 .sidebar-nav .nav-content a.active {
-  color: #4154f1;
+  color: #000;
 }
 
 .sidebar-nav .nav-content a.active i {
-  background-color: #4154f1;
+  background-color: #000;
 }
 
 /*--------------------------------------------------------------
@@ -768,7 +772,7 @@ h6 {
 }
 
 .dashboard .filter .icon {
-  color: #aab7cf;
+  color: #000;
   padding-right: 20px;
   padding-bottom: 5px;
   transition: 0.3s;
@@ -777,7 +781,7 @@ h6 {
 
 .dashboard .filter .icon:hover,
 .dashboard .filter .icon:focus {
-  color: #4154f1;
+  color: #000;
 }
 
 .dashboard .filter .dropdown-header {
@@ -789,7 +793,7 @@ h6 {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 1px;
-  color: #aab7cf;
+  color: #000;
   margin-bottom: 0;
   padding: 0;
 }
@@ -805,7 +809,7 @@ h6 {
 
 .dashboard .info-card h6 {
   font-size: 28px;
-  color: #012970;
+  color: #000;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -1004,7 +1008,7 @@ h6 {
 .profile .profile-card h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #2c384e;
+  color: #000;
   margin: 10px 0 0 0;
 }
 
@@ -1217,17 +1221,17 @@ h6 {
   padding: 20px 0;
   font-size: 14px;
   transition: all 0.3s;
-  border-top: 1px solid #cddfff;
+  border-top: 1px solid #000;
 }
 
 .footer .copyright {
   text-align: center;
-  color: #012970;
+  color: #000;
 }
 
 .footer .credits {
   padding-top: 5px;
   text-align: center;
   font-size: 13px;
-  color: #012970;
+  color: #000;
 }
