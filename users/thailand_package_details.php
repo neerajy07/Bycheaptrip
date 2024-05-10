@@ -169,11 +169,11 @@ if (mysqli_num_rows($result) > 0) {
                                                 <table>
                                                     <tr>
                                                         <td style="padding: 15px;">
-                                                            <a id="aWhatsapp" name="aWhatsapp" href="https://wa.me/<?php echo $row['phone'] ?>" target="_blank" class="btn btn-primary">Open Whatsapp With Message</a>
+                                                            <a id="aWhatsapp" name="aWhatsapp" href="https://wa.me/<?php echo $row['phone'] ?>" target="_blank" class="btn btn-primary" style="background:black;color:orange; border:none">Open Whatsapp With Message</a>
                                                         </td>
                                                         <td style="padding: 15px;">
                                           
-                       <a href="thailand_form_edit?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary">
+                       <a href="thailand_form_edit?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary" style="background:black;color:orange; border:none;">
                       Edit Information
                       </a>
                   </td>

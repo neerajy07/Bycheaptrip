@@ -106,7 +106,7 @@ if (isset($_GET['reff_id'])) {
                     <div class="row mb-3">
                       <label class="col-sm-3 col-form-label"></label>
                       <div class="col-sm-9">
-                        <button type="submit" class="btn btn-primary">Uploads</button>
+                        <button type="submit" class="btn btn-primary" style="background:black;color:orange;border:solid black;"> Uploads</button>
                       </div>
                     </div>
 

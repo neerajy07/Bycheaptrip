@@ -102,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="row mb-3">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-sm-9">
-                                    <button type="submit" class="btn btn-primary"> Submit</button>
+                                    <button type="submit" class="btn btn-primary" style="background:black;color:orange;border:solid black;"> Submit</button>
                                 </div>
                             </div>
 

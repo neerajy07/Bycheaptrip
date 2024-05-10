@@ -58,17 +58,7 @@ if (($_SESSION["usersID"] == "")) {
     main .d-flex{
         justify-content:start;
     } 
-    @media screen and (max-width:768px) {
-        
-        main .data-int input{
-            margin-left:20px;
-            padding-right:-10%;
-        }
-        main table .int{
-            margin-left:4%;
-        }
-       
-    }
+    
 </style>
 
 <?php include 'header.php'; ?>
@@ -1364,10 +1354,11 @@ if (($_SESSION["usersID"] == "")) {
                                         </div>
                                     </div>
                                 </div>
-
+                                    <div class="newbtn-2">
                                 <!-- <button type="button" id="addButton" class="btn btn-primary">Add</button> -->
-                                <button type="button" id="addButtonmain" class="btn btn-primary" style="background:#000; border:solid black;color:orange">Add</button>
-                                <button type="button" id="removeButton" class="btn btn-danger" style="display:none; background:orange;border:solid orange">Remove</button>
+                                        <button type="button" id="addButtonmain" class="btn btn-primary" style="background:#000; border:solid black;color:orange">Add</button>
+                                        <button type="button" id="removeButton" class="btn btn-danger" style="display:none; background:orange;border:solid orange">Remove</button>
+                                    </div>
                                 <!-- city transport -->
                                 <div id="cityformContainer1" class="d-flex justify-content-start">
                                     <div class="form-rows-container-1 d-flex">
@@ -2014,9 +2005,10 @@ if (($_SESSION["usersID"] == "")) {
                                        
                                     </div>
                                 </div>
+                                <div class="newbtn">
                                     <button type="button" id="transportaddButton" class="btn btn-primary" style="background:#000; border:solid black; color:orange">Add</button>
                                     <button type="button" id="transportremoveButton" class="btn btn-danger" style="display:none;background:orange; border:solid orange">Remove</button>
-
+                                    </div>
                                 <!-- end transport -->
                                 <div id="SightformContainer1" class="d-flex justify-content-start">
                                     <div class="form-rows-container-2 d-flex">
@@ -2783,8 +2775,11 @@ if (($_SESSION["usersID"] == "")) {
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" id="SightaddButton" class="btn btn-primary"  style="background:#000; border:solid black;color:orange" >Add</button>
-                                <button type="button" id="SightremoveButton" class="btn btn-danger" style="display:none; backgound:orange;">Remove</button>
+                                        <div class="newbtn">
+                                         <button type="button" id="SightaddButton" class="btn btn-primary"  style="background:#000; border:solid black;color:orange" >Add</button>
+                                         <button type="button" id="SightremoveButton" class="btn btn-danger" style="display:none; background:orange;border:solid orange">Remove</button>
+                                        
+                                        </div>
                             </div>
                             <table>
                                 <tr class="data-int">
@@ -2814,7 +2809,7 @@ if (($_SESSION["usersID"] == "")) {
                     </table>
 
                     <div class="center">
-                    <button type="button" class="btn btn-sm btn-block btn-primary" id="fetchDataButton" style="background:#000;border:solid black;font-family:poppins;width:22% ">Calculate</button>
+                    <button type="button" class="btn btn-sm btn-block btn-primary" id="fetchDataButton" style="background:#000;border:solid black;font-family:poppins;width:25% ">Calculate</button>
 
                     </div>
 

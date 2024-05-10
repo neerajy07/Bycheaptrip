@@ -20,6 +20,7 @@ if (($_SESSION["usersID"] == "")) {
     }
     main .breadcrumb{
         font-family:"poppins";
+        color:black;
        
     }
     main .section h5{
@@ -90,8 +91,8 @@ if (($_SESSION["usersID"] == "")) {
                                         <td><?php echo $row['travel_date'] ?></td>
                                         <td class="text-success fw-bold "><?php echo $row['status'] ?></td>
                                         <td>
-                                        <a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary"><i class="bi bi-check-circle"></i></a>
-                                        <a href="thailand_upload?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-info"><i class="bi bi-collection"></i></a>
+                                        <a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary"style="background:black;color:orange;border:none;"><i class="bi bi-check-circle"></i></a>
+                                        <a href="thailand_upload?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-info" style="background:black;color:orange;border:none;"><i class="bi bi-collection"></i></a>
                                         </td>
                                         
                                     

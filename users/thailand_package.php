@@ -81,8 +81,8 @@ if (($_SESSION["usersID"] == "")) {
                                         <td><?php echo $row['pax'] ?></td>
                                         <td><?php echo $row['package_inr'] ?></td>
                                         <td><?php echo $row['travel_date'] ?></td>
-                                        <td><a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary">show</a>
-                                        <a href="thailand_form_edit?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary">Edit</a></td>
+                                        <td><a href="thailand_package_details?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary" style="background:black;color:orange;border:1px solid black;">show</a>
+                                        <a href="thailand_form_edit?reff_id=<?php echo $row['reff_id']; ?>" class="btn btn-primary" style="background:black;color:orange;border:1px solid black;">Edit</a></td>
 
                                     </tr>
                                 <?php

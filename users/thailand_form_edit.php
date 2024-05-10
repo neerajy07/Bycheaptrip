@@ -19,6 +19,55 @@ if (($_SESSION["usersID"] == "")) {
     .hidden {
         display: none !important;
     }
+    
+    th{
+        color:#000;
+        font-family:"poppins"
+    }
+    .pagetitle h1{
+        color:black;
+        font-family:"poppins";
+    }
+    .card-body h5{  
+        color:black;
+    }
+    main .breadcrumb{
+        font-family:"poppins";
+        color:black;
+    }
+    main h1{
+        font-family:"poppins";
+        color:#000; margin-top:50px;
+        font-weight:700; 
+        font-size:22px;
+    }
+    main select{
+        font-family:"poppins";
+    }
+    .center {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+    }
+    .center button{
+        background:black;
+        border:none;
+    }
+    .center button:hover{
+        color:orange;
+        background:black;
+        border:none;
+    }
+    main table .int{
+        border:1px solid grey;
+        margin-left:-25%;
+    }
+    main .d-flex{
+        justify-content:start;
+    } 
+    .text-center button{
+        color:white;
+    }
 </style>
 
 <?php include 'header.php'; ?>
@@ -162,16 +211,16 @@ if(isset($_GET['reff_id'])) {
 ?>
                             <br>
                             <br>
-                            <h1 class="text-center text-info">THAILAND</h1>
-                            <div class="main bg-info">
-                                <div id="formContainer1" class="d-flex justify-content-center">
+                            <h1 class="text">Details here</h1>
+                            <div class="main">
+                                <div id="formContainer1" class="d-flex justify-content-start">
                                     <div class="form-rows-container d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city1" data-id="1">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -189,7 +238,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel1" data-id="1">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -211,7 +260,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category1" data-id="1">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -233,7 +282,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room1">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -248,7 +297,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night1">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -263,7 +312,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult1">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -273,7 +322,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate1">
                                         </div>
                                     </div>
@@ -285,7 +334,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city2" data-id="2">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -303,7 +352,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel2" data-id="2">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -325,7 +374,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category2" data-id="2">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -347,7 +396,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room2">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -362,7 +411,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night2">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -377,7 +426,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult2">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -387,7 +436,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate2">
                                         </div>
                                     </div>
@@ -399,7 +448,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city3" data-id="3">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -417,7 +466,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel3" data-id="3">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -439,7 +488,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category3" data-id="3">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -461,7 +510,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room3">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -476,7 +525,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night3">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -491,7 +540,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult3">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -501,7 +550,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate3">
                                         </div>
                                     </div>
@@ -513,7 +562,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control city" name="hotelcity_name[]" id="city4" data-id="4">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -531,7 +580,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel4" data-id="4">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -553,7 +602,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category4" data-id="4">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -575,7 +624,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room4">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -590,7 +639,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night4">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -605,7 +654,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult4">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -615,7 +664,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate4">
                                         </div>
                                     </div>
@@ -627,7 +676,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control  city" name="hotelcity_name[]" id="city5" data-id="5">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -645,7 +694,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel5" data-id="5">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -667,7 +716,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category5" data-id="5">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -689,7 +738,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room5">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -704,7 +753,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night5">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -719,7 +768,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult5">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -729,7 +778,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate5">
                                         </div>
                                     </div>
@@ -759,7 +808,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel6" data-id="6">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -781,7 +830,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category6" data-id="6">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -803,7 +852,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room6">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -818,7 +867,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night6">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -833,7 +882,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult6">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -843,7 +892,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate6">
                                         </div>
                                     </div>
@@ -855,7 +904,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control  city" name="hotelcity_name[]" id="city7" data-id="7">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -873,7 +922,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel7" data-id="7">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -895,7 +944,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category7" data-id="7">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -917,7 +966,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room7">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -932,7 +981,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="nights">Nights:</label>
+                                            <label for="nights"></label>
                                             <select class="form-control" name="nights[]" id="night7">
                                                 <option value="" selected>Select Nights</option>
                                                 <option value="1">1</option>
@@ -947,7 +996,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="adults">Adults:</label>
+                                            <label for="adults"></label>
                                             <select class="form-control" name="ex_adults[]" id="adult7">
                                                 <option value="" selected>Select Adults</option>
                                                 <option value="0">0</option>
@@ -969,7 +1018,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control  city" name="hotelcity_name[]" id="city8" data-id="8">
                                                 <option value="" selected>Select City</option>
                                                 <?php
@@ -987,7 +1036,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Hotel:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control hotel" name="hotels[]" id="hotel8" data-id="8">
                                                 <option value="" selected>Select Hotel</option>
                                                 <?php
@@ -1009,7 +1058,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="category">Category:</label>
+                                            <label for="category"></label>
                                             <select class="form-control category" name="category_name[]" id="category8" data-id="8">
                                                 <option value="" selected>Select Category</option>
                                                 <?php
@@ -1031,7 +1080,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">Rooms:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="rooms[]" id="room8">
                                                 <option value="" selected>Select Rooms</option>
                                                 <option value="1">1</option>
@@ -1869,24 +1918,24 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="hotelCheckinDate[]" id="hotelCheckinDate15">
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- <button type="button" id="addButton" class="btn btn-primary">Add</button> -->
-                                <button type="button" id="addButtonmain" class="btn btn-primary">Add</button>
-                                <button type="button" id="removeButton" class="btn btn-danger" style="display:none;">Remove</button>
+                                <button type="button" id="addButtonmain" class="btn btn-primary" style="color:orange;background:black;border:none;">Add</button>
+                                <button type="button" id="removeButton" class="btn btn-danger" style="display:none; background:orange;color:black;border:none;">Remove</button>
                                 <!-- city transport -->
-                                <div id="cityformContainer1" class="d-flex justify-content-center">
+                                <div id="cityformContainer1" class="d-flex justify-content-start">
                                     <div class="form-rows-container-1 d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity1" data-id="1">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -1904,7 +1953,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport transport" name="transport[]" id="transport1" data-id="1">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -1926,7 +1975,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory1" data-id="1">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -1948,7 +1997,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate1">
                                         </div>
 
@@ -1961,7 +2010,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity2" data-id="2">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -1979,7 +2028,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport transport" name="transport[]" id="transport2" data-id="2">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -2001,7 +2050,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory2" data-id="2">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -2023,7 +2072,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate2">
                                         </div>
 
@@ -2036,7 +2085,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity3" data-id="3">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2054,7 +2103,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport transport" name="transport[]" id="transport3" data-id="3">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -2076,7 +2125,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory3" data-id="3">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -2098,7 +2147,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate3">
                                         </div>
 
@@ -2111,7 +2160,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity4" data-id="4">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2129,7 +2178,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport" name="transport[]" id="transport4" data-id="4">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -2151,7 +2200,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory4" data-id="4">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -2173,7 +2222,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate4">
                                         </div>
 
@@ -2186,7 +2235,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity5" data-id="5">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2204,7 +2253,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport" name="transport[]" id="transport5" data-id="5">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -2226,7 +2275,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory5" data-id="5">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -2248,7 +2297,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate5">
                                         </div>
 
@@ -2261,7 +2310,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity6" data-id="6">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2279,7 +2328,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport" name="transport[]" id="transport6" data-id="6">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -2301,7 +2350,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory6" data-id="6">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -2323,7 +2372,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate6">
                                         </div>
 
@@ -2336,7 +2385,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity7" data-id="7">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2354,7 +2403,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport" name="transport[]" id="transport7" data-id="7">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -2376,7 +2425,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory7" data-id="7">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -2398,7 +2447,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate7">
                                         </div>
 
@@ -2411,7 +2460,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control transcity" name="transport_city[]" id="transcity8" data-id="8">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -2429,7 +2478,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Transport:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control transport" name="transport[]" id="transport8" data-id="8">
                                                 <option value="" selected>Select Transport</option>
                                                 <?php
@@ -2451,7 +2500,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="trans_pax[]" id="transCategory8" data-id="8">
                                                 <option value="" selected>Select Persion</option>
                                                 <?php
@@ -2473,7 +2522,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="transCheckinDate[]" id="transCheckinDate8">
                                         </div>
 
@@ -3004,17 +3053,17 @@ if(isset($_GET['reff_id'])) {
 
                                     </div>
                                 </div>
-                                <button type="button" id="transportaddButton" class="btn btn-primary">Add</button>
-                                <button type="button" id="transportremoveButton" class="btn btn-danger" style="display:none;">Remove</button>
+                                <button type="button" id="transportaddButton" class="btn btn-primary" style="background:black;color:orange;border:none;">Add</button>
+                                <button type="button" id="transportremoveButton" class="btn btn-danger" style="display:none; background:orange;color:black;border:none;">Remove</button>
                                 <!-- end transport -->
-                                <div id="SightformContainer1" class="d-flex justify-content-center">
+                                <div id="SightformContainer1" class="d-flex justify-content-start">
                                     <div class="form-rows-container-2 d-flex">
                                         <div class="form-row mx-1">
                                             <?php
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity1" data-id="1">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3032,7 +3081,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing1" data-id="1">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3054,7 +3103,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion1">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3069,7 +3118,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate1">
                                         </div>
                                     </div>
@@ -3081,7 +3130,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity2" data-id="2">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3099,7 +3148,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing2" data-id="2">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3121,7 +3170,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion2">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3136,7 +3185,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate2">
                                         </div>
                                     </div>
@@ -3148,7 +3197,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity[]" data-id="3">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3166,7 +3215,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing3" data-id="3">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3188,7 +3237,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion3">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3203,7 +3252,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate3">
                                         </div>
                                     </div>
@@ -3215,7 +3264,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity4" data-id="4">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3233,7 +3282,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing4" data-id="4">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3255,7 +3304,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion4">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3270,7 +3319,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate4">
                                         </div>
                                     </div>
@@ -3282,7 +3331,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity5" data-id="5">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3300,7 +3349,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing5" data-id="5">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3322,7 +3371,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion5">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3337,7 +3386,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate5">
                                         </div>
                                     </div>
@@ -3349,7 +3398,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity6" data-id="6">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3367,7 +3416,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing6" data-id="6">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3389,7 +3438,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion6">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3404,7 +3453,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate6">
                                         </div>
                                     </div>
@@ -3416,7 +3465,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity7" data-id="7">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3434,7 +3483,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing7" data-id="7">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3456,7 +3505,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion7">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3471,7 +3520,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate7">
                                         </div>
                                     </div>
@@ -3483,7 +3532,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity8" data-id="8">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3501,7 +3550,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing8" data-id="8">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3523,7 +3572,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion8">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3538,7 +3587,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate8">
                                         </div>
                                     </div>
@@ -3568,7 +3617,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing9" data-id="9">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3590,7 +3639,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion9">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -3605,7 +3654,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate9">
                                         </div>
                                     </div>
@@ -3617,7 +3666,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity10" data-id="10">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3739,7 +3788,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate11">
                                         </div>
                                     </div>
@@ -3751,7 +3800,7 @@ if(isset($_GET['reff_id'])) {
                                             $query = "SELECT * FROM cities";
                                             $result = mysqli_query($conn, $query);
                                             ?>
-                                            <label for="city">City:</label>
+                                            <label for="city"></label>
                                             <select class="form-control sightcity" name="sight_city[]" id="sightcity12" data-id="12">
                                                 <option value="disabled" selected>Select City</option>
                                                 <?php
@@ -3769,7 +3818,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing12" data-id="12">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3970,7 +4019,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="hotel">Sightseeing:</label>
+                                            <label for="hotel"></label>
                                             <select class="form-control" name="sightseeing[]" id="sightseeing15" data-id="15">
                                                 <option value="" selected>Select Sightseeing</option>
                                                 <?php
@@ -3992,7 +4041,7 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="rooms">No of Persion:</label>
+                                            <label for="rooms"></label>
                                             <select class="form-control" name="sight_persion[]" id="sightPersion15">
                                                 <option value="" selected>Select Persion</option>
                                                 <option value="1">1</option>
@@ -4007,13 +4056,13 @@ if(isset($_GET['reff_id'])) {
                                             </select>
                                         </div>
                                         <div class="form-row mx-1">
-                                            <label for="checkinDate">Check-in Date:</label>
+                                            <label for="checkinDate"></label>
                                             <input type="date" class="form-control checkin-date" name="sightCheckinDate[]" id="sightCheckinDate15">
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" id="SightaddButton" class="btn btn-primary">Add</button>
-                                <button type="button" id="SightremoveButton" class="btn btn-danger" style="display:none;">Remove</button>
+                                <button type="button" id="SightaddButton" class="btn btn-primary" style="background:black;color:orange;border:none;">Add</button>
+                                <button type="button" id="SightremoveButton" class="btn btn-danger" style="display:none; background:orange;color:black;border:none">Remove</button>
                             </div>
                             <?php
                             if(isset($_GET['reff_id'])) {
@@ -4259,7 +4308,7 @@ if(isset($_GET['reff_id'])) {
                                 echo "No reff_id provided";
                             }
                             ?>
-                            <button type="button" class="btn btn-sm btn-block btn-primary" id="fetchDataButton">Calculate</button>
+
                             <?php
                                 if(isset($_GET['reff_id'])) {
                                     $reff_id = $_GET['reff_id'];
@@ -4294,9 +4343,13 @@ if(isset($_GET['reff_id'])) {
                         <td><input type="text" name="package_inr" value="<?php echo $row['package_inr']?>" id="totalSumDisplay1" readonly/></td>
                     </tr>
                     </table>
+                    <div class="center">
+                    <button type="button" class="btn btn-primary" id="fetchDataButton">Calculate</button>
+
+                    </div>
 
                     <div class="text-center">
-                        <button type="submit" id="finalSubmit" class="btn btn-primary">Submit</button>
+                        <button type="submit" id="finalSubmit" class="btn btn-primary" style="background:black;color:orange; border:none;">Submit</button>
                         <!-- <button type="reset" class="btn btn-secondary">Reset</button> -->
                     </div>
 
